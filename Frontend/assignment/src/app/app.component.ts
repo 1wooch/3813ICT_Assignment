@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'assignment';
+  public logout(){
+    sessionStorage.clear();
+    window.location.reload(); //refresh the current page
+    //+redirect to login page?
+  }
 }

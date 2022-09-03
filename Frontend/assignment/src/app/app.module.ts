@@ -6,6 +6,20 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
 
+import { Router, RouterModule,Routes } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule,HttpClient } from '@angular/common/http';
+
+
+const routes:Routes=[
+  {path:'login',component:LoginComponent},
+  {path:'account',component:AccountComponent}
+];
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,9 +28,16 @@ import { AccountComponent } from './account/account.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    RouterModule,
+    RouterTestingModule,
+    RouterModule.forRoot(routes),
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [HttpClientModule],
+  bootstrap: [AppComponent],
+  exports:[RouterModule]
 })
 export class AppModule { }
