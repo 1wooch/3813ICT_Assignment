@@ -11,6 +11,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule,HttpClient } from '@angular/common/http';
+import { ManageUserComponent } from './manage-user/manage-user.component';
 
 
 const routes:Routes=[
@@ -24,7 +25,8 @@ const routes:Routes=[
   declarations: [
     AppComponent,
     LoginComponent,
-    AccountComponent
+    AccountComponent,
+    ManageUserComponent
   ],
   imports: [
     BrowserModule,

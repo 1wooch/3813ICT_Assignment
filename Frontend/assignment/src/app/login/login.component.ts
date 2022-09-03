@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
+import {Router} from '@angular/router';
+
 const httpOptions={
   headers:new HttpHeaders(
     {
       'Content-Type':'application/json'
 })};
-import {Router} from '@angular/router';
 
 const BACKEND_URL='http://localhost:3000';
 
@@ -35,7 +36,7 @@ export class LoginComponent implements OnInit {
     //console.log(username,password)
     this.httpClient.post(BACKEND_URL+'/login',{username:username,pwd:password})
     .subscribe((data:any)=>{
-      //console.log(data);
+      console.log(data.ok);
             if(data.ok){
               alert("success");
               //console.log(data.age); //working 22
@@ -49,9 +50,11 @@ export class LoginComponent implements OnInit {
               sessionStorage.setItem('pwd',data.pwd);
               this.router.navigateByUrl('account');
 
-            }else{
+            }if(data.ok==false) {
               alert('Sorry username or password is wrong');
+              window.location.reload();
             }
           });
+    
   }
 }
