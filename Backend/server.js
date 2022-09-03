@@ -17,6 +17,6 @@ var server=http.listen(3000,function(){
     console.log("server Listening on port :3000");
 })
 
-app.post('/login',require('./routes/postLogin'));
-app.post('/loginafter',require('./routes/postLoginafter'));
+app.post('/login',require('./routes/login'));
+app.post('/loginafter',require('./routes/account'));
 
