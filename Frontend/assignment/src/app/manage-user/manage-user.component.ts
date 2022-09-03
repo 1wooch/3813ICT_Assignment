@@ -24,12 +24,20 @@ export class ManageUserComponent implements OnInit {
   public modal:boolean=false;
 
   userInfo:any;
+  form:any={
+    e_username:null,
+    e_birthdate:null,
+    e_age:null,
+    e_email:null,
+    e_role:null,
+    e_pwd:null
+  }
 
   constructor(private modalService: NgbModal,private httpClient:HttpClient,private router:Router){}
   closeResult = '';
   
 
-  ngOnInit(): void {}
+  ngOnInit(): void {this.getUser()}
 
 
   public clickedModalClose(){
@@ -40,16 +48,36 @@ export class ManageUserComponent implements OnInit {
 
   }
   public getUser(){
-    //const userInfo={};
 
     this.httpClient.post(BACKEND_URL+'/manageUser',null).subscribe((data:any)=>{
-      console.log(data.userArray);//working
-      this.userInfo=data.userArray;
+      this.userInfo=data.userArray.users;
 
-      //this.userInfo=JSON.parse( data.userArray);no
-      console.log(this.userInfo.username);
     });
-
   }
-  
+  public addUser(){
+    
+    const{e_email,e_role,e_age,e_birthdate,e_username,e_pwd}=this.form;
+    this.httpClient.post(BACKEND_URL+'/addUser',{pwd:e_pwd,username:e_username,email:e_email,age:e_age,role:e_role,birthdate:e_birthdate})
+    .subscribe((data:any)=>{
+      if(data.ok==false){
+        alert("user Already exist");
+
+      }else if (data.ok==true){
+        alert("user added");
+        window.location.reload();
+      }
+    });
+  }
+  public removeUser(username:string){
+    this.httpClient.post(BACKEND_URL+'/deleteUser',{username:username})
+    .subscribe((data:any)=>{
+      if(data.ok){
+        alert("User Deleted");
+        window.location.reload();
+
+      }
+    });
+  }
+ 
 }
+
