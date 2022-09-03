@@ -1,1 +1,60 @@
-<p>manage-user works!</p>
+<!DOCTYPE html>
+<html>
+    <head>
+        Manage User
+    </head>
+    <body>
+      <button type="submit" (click)="getUser()" class="btn btn-primary">GetUser</button>
+
+      <table class="table table-dark" >
+            <thead>
+              <tr>
+                <th scope="col">Usar Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Age</th>
+                <th scope="col">Birthdate</th>
+                <th scope="col">Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of userInfo">
+                <td>{{row.username}}</td>
+                <td>{{row.email}</td>
+                <td>{{row.age}}</td>
+                <td>{{row.birthdate}</td>
+                <td>{{row.role}</td>
+
+              </tr>
+              
+            </tbody>
+          </table>
+    </body>
+</html>
+
+
+
+<!-- Modal -->
+<div class="pt-4">
+  <button class="btn btn-danger" (click)="clickedModal()">모달</button>
+</div>
+
+<!-- Modal -->
+<div [ngClass]="modal ? 'modal fade show d-block' : 'modal fade'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" (click)="clickedModalClose()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>body</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="clickedModalClose()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+

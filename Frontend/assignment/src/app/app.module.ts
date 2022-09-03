@@ -12,6 +12,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule,HttpClient } from '@angular/common/http';
 import { ManageUserComponent } from './manage-user/manage-user.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const routes:Routes=[
@@ -36,7 +37,8 @@ const routes:Routes=[
     RouterModule.forRoot(routes),
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent],

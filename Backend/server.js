@@ -19,4 +19,5 @@ var server=http.listen(3000,function(){
 
 app.post('/login',require('./routes/login'));
 app.post('/loginafter',require('./routes/account'));
+app.post('/manageUser',require('./routes/manageUser'));
 
