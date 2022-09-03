@@ -48,7 +48,9 @@ export class LoginComponent implements OnInit {
               sessionStorage.setItem('role',data.role);
               sessionStorage.setItem('birthdate',data.birthdate);
               sessionStorage.setItem('pwd',data.pwd);
-              this.router.navigateByUrl('account');
+              window.location.reload();
+
+              this.router.navigateByUrl('/account');
 
             }if(data.ok==false) {
               alert('Sorry username or password is wrong');
