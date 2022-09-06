@@ -1,21 +1,9 @@
 var fs = require('fs');
 
 module.exports=function(req,res){
-    var age=req.body.age;
-    var birthdate=req.body.birthdate;
-    var email=req.body.email;
-    var username=req.body.username;
-    var role=req.body.role;
-    var pwd=req.body.pwd;
 
-    var inputdata={
-        "username":username,
-        "pwd":pwd,
-        "email":email,
-        "age":age,
-        "birthdate":birthdate,
-        "role":role
-    }
+    var username=req.body.username;
+   
     //console.log(age,birthdate,email,username,role);
     fs.readFile('./Data/users.json','utf8',function(error,data){
             const obj=JSON.parse(data);

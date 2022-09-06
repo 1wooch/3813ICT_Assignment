@@ -22,4 +22,8 @@ app.post('/loginafter',require('./routes/account'));
 app.post('/manageUser',require('./routes/manageUser'));
 app.post('/addUser',require('./routes/addUser'));
 app.post('/deleteUser',require('./routes/deleteUser'));
+app.post('/groupadminget',require('./routes/group-admin-get'));
+app.post('/getGroupMember',require('./routes/getGroupMember'));
+app.post('/deleteGroupMember',require('./routes/deletegroupmember'));
+app.post('/addGroupMember',require('./routes/addgroupmember'));
 

@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule,HttpClient } from '@angular/common/http';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GroupAdminComponent } from './group-admin/group-admin.component';
 
 
 const routes:Routes=[
@@ -27,7 +28,8 @@ const routes:Routes=[
     AppComponent,
     LoginComponent,
     AccountComponent,
-    ManageUserComponent
+    ManageUserComponent,
+    GroupAdminComponent
   ],
   imports: [
     BrowserModule,

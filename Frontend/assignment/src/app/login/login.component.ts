@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private httpClient:HttpClient,private router:Router){}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
+  
   public loginfunc(){
     const{username,password}=this.form;
     //console.log(username,password)
@@ -48,9 +48,9 @@ export class LoginComponent implements OnInit {
               sessionStorage.setItem('role',data.role);
               sessionStorage.setItem('birthdate',data.birthdate);
               sessionStorage.setItem('pwd',data.pwd);
-              window.location.reload();
+              //window.location.reload();
 
-              this.router.navigateByUrl('/account');
+              this.router.navigateByUrl('account');
 
             }if(data.ok==false) {
               alert('Sorry username or password is wrong');

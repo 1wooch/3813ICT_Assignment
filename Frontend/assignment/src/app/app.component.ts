@@ -14,18 +14,20 @@ export class AppComponent implements OnInit{
   role=sessionStorage.getItem('role');    
   isAdmin=false;
   login=false;
+  groupAdmin=false;
+
 
   constructor(private router:Router){}
-  ngOnInit(): void {this.userIsSuperAdmin(),this.loginStatus()}
+  ngOnInit(): void {this.userIsSuperAdmin(),this.loginStatus(),this.userIsGroupAdmin()}
   
 
   title = 'assignment';
   public logout(){
     sessionStorage.clear();
     //window.location.reload(); //refresh the current page
-    this.router.navigateByUrl('/login');
     //+redirect to login page?
     window.location.reload(); //refresh the current page
+    this.router.navigateByUrl('login');
 
   }
   public userIsSuperAdmin(){
@@ -33,7 +35,7 @@ export class AppComponent implements OnInit{
     this.role=sessionStorage.getItem('role');
     console.log(this.role);
 
-    if(this.role==="superAdmin"){
+    if(this.role==="superadmin"){
       this.isAdmin=true;
       console.log(this.isAdmin);
     }else{
@@ -55,6 +57,19 @@ export class AppComponent implements OnInit{
       console.log("not log in yet");
       console.log(this.login);
 
+    }
+  }
+  public userIsGroupAdmin(){
+    this.isAdmin=false;
+    this.role=sessionStorage.getItem('role');
+    console.log(this.role);
+
+    if(this.role==="groupadmin"){
+      this.groupAdmin=true;
+      console.log("group admin"+this.groupAdmin);
+    }else{
+      this.groupAdmin=false;
+      console.log(this.groupAdmin);
     }
   }
   
