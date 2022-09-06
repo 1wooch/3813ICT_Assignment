@@ -28,4 +28,7 @@ app.post('/deleteGroupMember',require('./routes/deletegroupmember'));
 app.post('/addGroupMember',require('./routes/addgroupmember'));
 app.post('/searchChenel',require('./routes/searchChenal'));
 app.post('/deleteCenel',require('./routes/deleteChanel'));
+app.post('/getChanel',require('./routes/getChanelList'));
+app.post('/addUserInChanel',require('./routes/addUserInChanel'));
+
 

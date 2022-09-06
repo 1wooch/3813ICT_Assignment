@@ -23,14 +23,11 @@ module.exports=function(req,res){
                     }
 
                 }
-
-                
             }
             for (let i=0; i<obj.group.length; i++){
                     if(groupname==obj.group[i]['groupname']){
                         group_num=i;
                         break;
-                        
                     }
             }
             //console.log(group_num);
