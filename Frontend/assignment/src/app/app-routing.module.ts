@@ -5,13 +5,17 @@ import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { GroupAdminComponent } from './group-admin/group-admin.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
+
+
 
 const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
   {path:'login',component:LoginComponent},
   {path:'account',component:AccountComponent},
   {path:'manageuser',component:ManageUserComponent},
-  {path:'groupadmin',component:GroupAdminComponent}
+  {path:'groupadmin',component:GroupAdminComponent},
+  {path:'mainpage',component:MainpageComponent}
 ];
 
 @NgModule({

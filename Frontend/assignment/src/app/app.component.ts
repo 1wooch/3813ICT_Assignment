@@ -12,9 +12,10 @@ export class AppComponent implements OnInit{
   userName=sessionStorage.getItem('username');
 
   role=sessionStorage.getItem('role');    
-  isAdmin=false;
+  superadmin=false;
   login=false;
   groupAdmin=false;
+  loginbutton=true;
 
 
   constructor(private router:Router){}
@@ -26,43 +27,52 @@ export class AppComponent implements OnInit{
     sessionStorage.clear();
     //window.location.reload(); //refresh the current page
     //+redirect to login page?
-    window.location.reload(); //refresh the current page
+    //window.location.reload(); //refresh the current page
     this.router.navigateByUrl('login');
 
   }
-  public userIsSuperAdmin(){
-    this.isAdmin=false;
-    this.role=sessionStorage.getItem('role');
-    console.log(this.role);
 
-    if(this.role==="superadmin"){
-      this.isAdmin=true;
-      console.log(this.isAdmin);
+
+  public userIsSuperAdmin(){
+    //console.log("taest231"+this.role);
+    //console.log("isadmin="+this.isAdmin);
+
+    if(this.role=="superadmin"){
+      this.superadmin=true;
+      console.log("superadmin123"+this.superadmin);
     }else{
-      this.isAdmin=false;
-      console.log(this.isAdmin);
+      this.superadmin=false;
+      console.log("superadmin111"+this.superadmin);
     }
+    //console.log("isadmin123="+this.isAdmin);
   }
+
+
   public loginStatus(){
+    
     if(this.userName===null){
       this.login=false
+      this.loginbutton=true;
+
     }else{
       this.login=true
+      this.loginbutton=false;
+
     }
     if(this.login){
-      console.log("log in!");
+      //console.log("log in!");
       console.log(this.login);
     }
     else{
-      console.log("not log in yet");
+      //console.log("not log in yet");
       console.log(this.login);
 
     }
   }
   public userIsGroupAdmin(){
-    this.isAdmin=false;
+
     this.role=sessionStorage.getItem('role');
-    console.log(this.role);
+    //console.log(this.role);
 
     if(this.role==="groupadmin"){
       this.groupAdmin=true;
