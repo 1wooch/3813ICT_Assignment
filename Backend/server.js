@@ -26,4 +26,6 @@ app.post('/groupadminget',require('./routes/group-admin-get'));
 app.post('/getGroupMember',require('./routes/getGroupMember'));
 app.post('/deleteGroupMember',require('./routes/deletegroupmember'));
 app.post('/addGroupMember',require('./routes/addgroupmember'));
+app.post('/searchChenel',require('./routes/searchChenal'));
+app.post('/deleteCenel',require('./routes/deleteChanel'));
 

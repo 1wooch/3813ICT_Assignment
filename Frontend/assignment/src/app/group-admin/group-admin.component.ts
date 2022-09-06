@@ -3,6 +3,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 import {Router} from '@angular/router';
 import {NgbActiveModal, NgbModal,ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { group } from '@angular/animations';
 
 const httpOptions={
   headers:new HttpHeaders(
@@ -21,20 +22,28 @@ const BACKEND_URL='http://localhost:3000';
 
 
 export class GroupAdminComponent implements OnInit {
+  closeResult = '';
 
 
   public modal:boolean=false;
+  public chanelmodal:boolean=false;
+
   userlist:any;
   username=sessionStorage.getItem('username');
   role=sessionStorage.getItem('role');
   groupname:any;
   deleteusername:any;
 
+  chenel_name:any;
+  public username_save="";
+
+
+
   form:any={
     e_username:null
 
   }
-  constructor(private modalService: NgbModal,private httpClient:HttpClient,private router:Router){}
+  constructor(private modalService: NgbModal,private httpClient:HttpClient,private router:Router,){}
 
   ngOnInit(): void {this.getUser()}
 
@@ -69,6 +78,17 @@ export class GroupAdminComponent implements OnInit {
     this.modal=true;
 
   }
+public clickedchanelModalClose(){
+    this.chanelmodal=false;
+
+  }
+  open(content:any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+     
+    });
+  }
 
   public removeUser(deleteusername:any){
     console.log("username delte"+deleteusername);
@@ -95,5 +115,30 @@ export class GroupAdminComponent implements OnInit {
         window.location.reload();
       }
     });
+  }
+  public deleteChanel(chanelname:any){
+    
+    //console.log(this.username_save);//work;
+    console.log(chanelname);
+
+    this.httpClient.post(BACKEND_URL+'/deleteCenel',{username:this.username_save,chanelname:chanelname}).subscribe((data:any)=>{
+      //console.log(data.ok);
+      if(data.ok==true){
+        alert("user deleted");
+        window.location.reload();
+
+      }
+    })
+
+  }
+  public clickedchanelModal(groupname:any,username:any){
+    this.chanelmodal=true;
+    this.username_save=username;
+
+    this.httpClient.post(BACKEND_URL+'/searchChenel',{username:username,groupname:groupname}).subscribe((data:any)=>{
+      console.log(data.chanelList);
+      this.chenel_name=data.chanelList;
+
+    })
   }
 }

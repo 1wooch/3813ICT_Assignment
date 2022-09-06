@@ -5,14 +5,16 @@
     </head>
     <body>
         <h1>You are Admin of group:{{groupname}}</h1>
-      <button class="btn btn-danger" (click)="clickedModal()">Add User</button>
+        <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add User</button>
+
+      <!--<button class="btn btn-danger" (click)="clickedModal()">Add User</button>-->
 
       <table class="table table-dark" >
             <thead>
               <tr>
                 <th scope="col">Group Name</th>
                 <th scope="col">User Name</th>
-                <!--<th scope="col">Chanels</th> -->
+                <th scope="col">Chanels</th> 
 
                 <th scope="col"></th>
               </tr>
@@ -21,23 +23,18 @@
               <tr *ngFor="let row of userlist">
                 <td>{{this.groupname}}</td>
                 <td>{{row}}</td>
-                <!--<td>{{row.age}}</td>-->
-
+                <td> <button class="btn btn-danger" (click)="clickedchanelModal(this.groupname,row)">Check Chanel</button>
+                </td>
                 <td><button (click)="removeUser(row)" class="btn btn-danger">DELETE</button></td>
               </tr>
-              
+
             </tbody>
           </table>
+     
     </body>
 </html>
 
-
-
-<!-- Modal -->
-<div class="pt-4">
-</div>
-
-<!-- Modal -->
+<!-- Modal 
 <div [ngClass]="modal ? 'modal fade show d-block' : 'modal fade'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -55,12 +52,65 @@
               <br>
               <input type="text"  [(ngModel)]="form.e_username" name="username" id="username" class="form-control">
           </div>
-         
           <button type="submit" (click)="addUser()" class="btn btn-primary">submit</button>
-
           </form>
+    </div>
+  </div>
+</div>
+-->
+<!-- chanelModal -->
+<div [ngClass]="chanelmodal ? 'modal fade show d-block' : 'modal fade'" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document1">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalLabel">Show Chanel of </h5>
+        <button type="button" class="close" (click)="clickedchanelModalClose()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+   
+        <thead>
+          <th scope="col">Chanel Name</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
 
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of chenel_name">
+            <td>{{row}}</td>
+            <td>||</td>
+            <td><button (click)="deleteChanel(row)" class="btn btn-danger">DELETE</button></td>
+          </tbody>
     </div>
   </div>
 </div>
 
+
+
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <div class="input-group">
+          <form class="form">
+            <h3>Add User</h3>
+            <div>
+                <a>USERNAME: </a>
+                <br>
+                <input type="text"  [(ngModel)]="form.e_username" name="username" id="username" class="form-control">
+            </div>
+            <button type="submit" (click)="addUser()" class="btn btn-primary">submit</button>
+            </form>        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>

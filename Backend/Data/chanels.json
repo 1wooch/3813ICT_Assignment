@@ -1,9 +1,1 @@
-{
-    "group": [
-      {
-        "chanelname": "test chanel",
-        "user_list":["wwc","test1chnel1","test2chanel2"]
-
-      }
-    ]
-  }
+{"chanel":[{"chanelname":"test chanel1","user_list":["wwc","test1chnel 1","test1chanel 2","test1"],"groupname":"test group"},{"chanelname":"test chanel2","user_list":["test2chnel 1","test2chanel 2"],"groupname":"test group"},{"chanelname":"test chanel3","user_list":["test3chnel 1","test3chanel 2","test3"],"groupname":"test group"}]}

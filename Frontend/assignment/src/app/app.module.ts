@@ -14,6 +14,7 @@ import { HttpClientModule,HttpClient } from '@angular/common/http';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GroupAdminComponent } from './group-admin/group-admin.component';
+import { MainpageComponent } from './mainpage/mainpage.component';
 
 
 const routes:Routes=[
@@ -29,7 +30,8 @@ const routes:Routes=[
     LoginComponent,
     AccountComponent,
     ManageUserComponent,
-    GroupAdminComponent
+    GroupAdminComponent,
+    MainpageComponent
   ],
   imports: [
     BrowserModule,
