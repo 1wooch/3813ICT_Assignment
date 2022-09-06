@@ -72,7 +72,7 @@ export class GroupAdminComponent implements OnInit {
 
   public removeUser(deleteusername:any){
     console.log("username delte"+deleteusername);
-    this.httpClient.post(BACKEND_URL+'/deleteGroupMember',{username:deleteusername})
+    this.httpClient.post(BACKEND_URL+'/deleteGroupMember',{username:deleteusername,groupname:this.groupname})
     .subscribe((data:any)=>{
       if(data.ok){
         alert("User Deleted");
@@ -85,7 +85,7 @@ export class GroupAdminComponent implements OnInit {
   public addUser(){
     
     const{e_email,e_role,e_age,e_birthdate,e_username,e_pwd}=this.form;
-    this.httpClient.post(BACKEND_URL+'/addUser',{pwd:e_pwd,username:e_username,email:e_email,age:e_age,role:e_role,birthdate:e_birthdate})
+    this.httpClient.post(BACKEND_URL+'/addGroupMember',{username:e_username})
     .subscribe((data:any)=>{
       if(data.ok==false){
         alert("user Already exist");
