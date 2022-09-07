@@ -36,19 +36,32 @@ export class AccountComponent implements OnInit {
 
   public edit(){
     const{e_email,e_role,e_age,e_birthdate,e_username,e_pwd}=this.form;
-
+    if(e_email !=null && e_role!=null&&e_age!=null && e_birthdate!=null && e_username!=null && e_pwd!=null){
     //console.log(e_email,e_role,e_birthdate,e_age,e_username); //working
-    sessionStorage.setItem('username',e_username);
-    sessionStorage.setItem('email',e_email);
-    sessionStorage.setItem('age',e_age);
-    sessionStorage.setItem('role',e_role);
-    sessionStorage.setItem('birthdate',e_birthdate);
-    sessionStorage.setItem('pwd',e_pwd);
-
+  
     
     this.httpClient.post(BACKEND_URL+'/loginafter',{pwd:e_pwd,username:e_username,email:e_email,age:e_age,role:e_role,birthdate:e_birthdate})
-    .subscribe();
+    .subscribe((data:any)=>{
+      if (data.ok==true){
+        alert("Information has changed");
+        sessionStorage.setItem('username',e_username);
+        sessionStorage.setItem('email',e_email);
+        sessionStorage.setItem('age',e_age);
+        sessionStorage.setItem('role',e_role);
+        sessionStorage.setItem('birthdate',e_birthdate);
+        sessionStorage.setItem('pwd',e_pwd);
     
+      }else if(data.ok==false){
+        alert("Information added to new user");
+        window.location.reload();
+
+      }
+    });
+  }else{
+    alert("please fill every form");
+    
+  }
+
     
 
   }

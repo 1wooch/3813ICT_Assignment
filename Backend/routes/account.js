@@ -23,16 +23,18 @@ module.exports=function(req,res){
             for (let i=0; i<obj.users.length; i++){
                 if(email==obj.users[i]['email']){
                     obj.users[i]=inputdata;
-                    found=true;         
+                    found=true;  
+                    res.send({ok:true});
+       
                     break;
                 }
             }
             if(found==false){
+                res.send({ok:false});
                 obj.users.push(inputdata);
             }
-            res.send(obj);
             let objJson=JSON.stringify(obj);
-            console.log("2"+objJson);
+            //console.log("2"+objJson);
             fs.writeFile('./Data/users.json', objJson,'utf-8',function(err){
                 if (err)throw err;
             });
