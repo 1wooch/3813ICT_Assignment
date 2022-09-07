@@ -118,13 +118,17 @@ and rewrite the users.json and save it.
 
 Once the user login as groupadmin role account, the managegroup menu will be displayed on navigation bar.
 
-![image](https://user-images.githubusercontent.com/51581298/188828666-6246a652-9a53-413c-9dd2-be943dc99ad4.png)
+![image](https://user-images.githubusercontent.com/51581298/188927551-8e8c1bcb-9c37-4d69-b70a-01f982b9c6f7.png)
+
 
 When the page start the page will get the username and send it to backend server so the page can get the which group admin the user is.
 By the group name we got the page will display what gorup manaer is.
 After we get the groupname page will show all of the user in that group as list in table.
 By clicking the check chanel groupmanager can see chich chanel the selected user currently in.
 By clicking make admin button admin can make user into admin.
+ The delete admin button only show the row that the user is admin.
+ and also make admin button only show the row that the user is not admin.
+
 
 
 ![image](https://user-images.githubusercontent.com/51581298/188793764-a7f53aa2-b3b2-4f4c-b967-b970d0efc3c1.png)
@@ -474,7 +478,51 @@ e.g.:
     5. else put username in admin array and send true to frontend.
  -----------------------------------------------------
 <br/>
-    
+
+15.  checkGroupAdmin
+<br/>
+------------------------------------------------------<br/>
+
++ Input Value (GET): username, groupname
+<br/>
+
+-------------------------------------------------------<br/>
+
++ Output (POST): ok (boolean)<br/>
+
+-------------------------------------------------------<br/>
+
++ explanation of function: 
+    1. get username and groupname from frontend.
+    2. using given groupname find the group.
+    3. after find group check whether the group already has same admin or not.
+    4. if they have send ok=false to frontend.
+    5. else put username in admin array and send true to frontend.
+ -----------------------------------------------------
+<br/>
+
+16.  deleteGroupAdmin
+<br/>
+------------------------------------------------------<br/>
+
++ Input Value (GET): username, groupname<br/>
+
+-------------------------------------------------------<br/>
+
++ Output (POST): ok (boolean)<br/>
+
+-------------------------------------------------------<br/>
+
++ explanation of function: 
+    1. get username and groupname from frontend.
+    2. using given groupname find the group.
+    3. after find group check whether the group has admin .
+    4. delete admin from group_manager_list and write new array in group.json file.
+    5. return true to frontend.
+ -----------------------------------------------------
+<br/>
+
+
 # Json file
 
 
@@ -513,8 +561,7 @@ role is string represent role of the user.
             "group_manager_list":["manager1","manager2"],
             "chanels":[
                 "chanel1","chanel2"
-            ],
-            "admin":["testadmin"]
+            ]
         }
     ]
 -----------------------------------------------------<br/>
@@ -589,8 +636,9 @@ addUserChanel() | router/getChanel
 open(content:any) | N/A
 AddUserInChanel() | router/addUserInChanel
 MakeAdmin(username:any) | router/makeUserAdmin
-
-
+deleteAdmin(username:any)| router/deleteGroupAdmin
+checkAdmin(username:any):any| N/A
+checkUser(username:any):any | N/A
 4. MANAGE USER PAGE
 
 VIEW: manage-user.component.html

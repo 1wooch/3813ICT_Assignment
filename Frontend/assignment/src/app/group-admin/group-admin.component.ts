@@ -242,8 +242,9 @@ public clickedchanelModalClose(){
     
       //console.log(this.username_save);//work;
       console.log(username);
-
-      this.httpClient.post(BACKEND_URL+'/deleteGroupAdmin',{username:username}).subscribe((data:any)=>{
+      console.log(this.groupname);
+      
+      this.httpClient.post(BACKEND_URL+'/deleteGroupAdmin',{username:username,groupname:this.groupname}).subscribe((data:any)=>{
         console.log(data.ok);
         if(data.ok==true){
           alert("Admin deleted");
