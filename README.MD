@@ -55,7 +55,9 @@ If data.ok=false then send alert and refresh the page.
 #### Local Storage
 ![image](https://user-images.githubusercontent.com/51581298/188822972-d869938c-a65f-4136-8f93-69563f9cb9dc.png)
 
---------------------------------------------------
+<br/>
+--------------------------------------------------<br/>
+
 
 2. Account Page<br/>
 
@@ -88,7 +90,9 @@ After that send true to frontend then alert user information has changed.
 If the frontend receive false that means they couldn't find it so add as new user.
 ![image](https://user-images.githubusercontent.com/51581298/188782563-6cdbe10c-bb76-45bd-acd6-3b42d4702fcf.png)
 
----------------------------------------------
+<br/>
+---------------------------------------------<br/>
+
 
 3. Manage User<br/>
 Manage user page only access by navigation bar.
@@ -146,8 +150,10 @@ If file receive false then alert "user already exist in +selected chanel name".
 5. Log out button.<br/>
 Once the user click log out button the localstorage will be cleared and return to login page.
 
+<br/>
 
------------------------------------------------------
+-----------------------------------------------------<br/>
+
 # Backend
 <br/>
 Backend has 2 different big files. 
