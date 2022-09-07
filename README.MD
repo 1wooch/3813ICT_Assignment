@@ -225,10 +225,12 @@ e.g.:
 <br/>
 ------------------------------------------------------<br/>
 
-+ Input Value (GET) : N/A (No Input)
++ Input Value (GET) : N/A (No Input)<br/>
+
 -------------------------------------------------------<br/>
 
-+ Output (POST): userArray (Array of User information)
++ Output (POST): userArray (Array of User information)<br/>
+
 -------------------------------------------------------<br/>
 
 + explanation of function: 
@@ -240,10 +242,12 @@ e.g.:
 <br/>
 ------------------------------------------------------<br/>
 
-+ Input Value (GET): username,pwd,email,age,birthdate,role
++ Input Value (GET): username,pwd,email,age,birthdate,role<br/>
+
 -------------------------------------------------------<br/>
 
-+ Output (POST) : ok (boolean)
++ Output (POST) : ok (boolean)<br/>
+
 -------------------------------------------------------<br/>
 
 + explanation of function: 
@@ -260,10 +264,12 @@ e.g.:
 <br/>
 ------------------------------------------------------<br/>
 
-+ Input Value (GET): username
++ Input Value (GET): username<br/>
+
 -------------------------------------------------------<br/>
 
-+ Output (POST): ok
++ Output (POST): ok<br/>
+
 -------------------------------------------------------<br/>
 
 + explanation of function: 
@@ -278,10 +284,12 @@ e.g.:
 <br/>
 ------------------------------------------------------<br/>
 
-+ Input Value (GET): username
++ Input Value (GET): username<br/>
+
 -------------------------------------------------------<br/>
 
-+ Output (POST): ok (boolean), groupname (string)
++ Output (POST): ok (boolean), groupname (string)<br/>
+
 -------------------------------------------------------<br/>
 
 + explanation of function: 
@@ -297,10 +305,12 @@ e.g.:
 <br/>
 ------------------------------------------------------<br/>
 
-+ Input Value (GET): groupname
++ Input Value (GET): groupname<br/>
+
 -------------------------------------------------------<br/>
 
-+ Output (POST): ok (boolean), groupname, userlist, managerlist, chanels
++ Output (POST): ok (boolean), groupname, userlist, managerlist, chanels<br/>
+
 -------------------------------------------------------<br/>
 
 + explanation of function: 
@@ -315,10 +325,12 @@ e.g.:
 <br/>
 ------------------------------------------------------<br/>
 
-+ Input Value (GET): username
++ Input Value (GET): username<br/>
+
 -------------------------------------------------------<br/>
 
-+ Output (POST): ok (boolean)
++ Output (POST): ok (boolean)<br/>
+
 -------------------------------------------------------<br/>
 
 + explanation of function: 
@@ -333,10 +345,12 @@ e.g.:
 <br/>
 ------------------------------------------------------<br/>
 
-+ Input Value (GET): username, groupname
++ Input Value (GET): username, groupname<br/>
+
 -------------------------------------------------------<br/>
 
-+ Output (POST): ok(boolean)
++ Output (POST): ok(boolean)<br/>
+
 -------------------------------------------------------<br/>
 
 + explanation of function: 
@@ -353,10 +367,12 @@ e.g.:
 <br/>
 ------------------------------------------------------<br/>
 
-+ Input Value (GET): groupname, username
++ Input Value (GET): groupname, username<br/>
+
 -------------------------------------------------------<br/>
 
-+ Output (POST): ok (boolean) , chanelList (arrray)
++ Output (POST): ok (boolean) , chanelList (arrray)<br/>
+
 -------------------------------------------------------<br/>
 
 + explanation of function: 
@@ -373,10 +389,12 @@ e.g.:
 <br/>
 ------------------------------------------------------<br/>
 
-+ Input Value (GET): username,chanelname
++ Input Value (GET): username,chanelname<br/>
+
 -------------------------------------------------------<br/>
 
-+ Output (POST): ok (boolean)
++ Output (POST): ok (boolean)<br/>
+
 -------------------------------------------------------<br/>
 
 + explanation of function: 
@@ -392,10 +410,12 @@ e.g.:
 <br/>
 ------------------------------------------------------<br/>
 
-+ Input Value (GET): groupname
++ Input Value (GET): groupname<br/>
+
 -------------------------------------------------------<br/>
 
-+ Output (POST): ok (boolean), result (array)
++ Output (POST): ok (boolean), result (array)<br/>
+
 -------------------------------------------------------<br/>
 
 + explanation of function: 
@@ -409,10 +429,12 @@ e.g.:
 <br/>
 ------------------------------------------------------<br/>
 
-+ Input Value (GET): username, chanelname
++ Input Value (GET): username, chanelname<br/>
+
 -------------------------------------------------------<br/>
 
-+ Output (POST): ok (boolean)
++ Output (POST): ok (boolean)<br/>
+
 -------------------------------------------------------<br/>
 
 + explanation of function: 
@@ -428,10 +450,12 @@ e.g.:
 <br/>
 ------------------------------------------------------<br/>
 
-+ Input Value (GET): username, groupname
++ Input Value (GET): username, groupname<br/>
+
 -------------------------------------------------------<br/>
 
-+ Output (POST): ok (boolean)
++ Output (POST): ok (boolean)<br/>
+
 -------------------------------------------------------<br/>
 
 + explanation of function: 
