@@ -397,6 +397,7 @@ e.g.:
 
 1. users.json
 <br/>
+
     "users":[
         {
             "username":"username",
@@ -419,6 +420,7 @@ role is string represent role of the user.
 
 2. group.json
 <br/>
+
     "group":[
         {
             "groupname":"groupname",
