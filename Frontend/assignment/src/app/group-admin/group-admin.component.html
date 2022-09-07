@@ -4,20 +4,20 @@
         Manage User
     </head>
     <body>
+      <div>
         <h1>You are Admin of group:{{groupname}}</h1>
         <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add User</button>
-
         <select [(ngModel)]="selectedUserName"   (change)="AddUserInChanel()">
           <option *ngFor="let data of userlist" [value]="data">
               {{data}}
           </option>
         </select>  
-
         <select [(ngModel)]="selectedChanelName"   (change)="AddUserInChanel()">
           <option *ngFor="let data1 of chanel_list" [value]="data1">
               {{data1}}
           </option>
         </select>  
+      </div>
 <!--        <button class="btn btn-lg btn-outline-primary" (click)="AddUserInChanel()">Add User In Selected Chanel</button>
 -->
 

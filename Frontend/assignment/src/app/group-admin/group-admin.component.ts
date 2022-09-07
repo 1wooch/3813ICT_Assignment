@@ -193,7 +193,7 @@ public clickedchanelModalClose(){
         alert("User Added");
         window.location.reload();
       }else if(data.ok==false){
-        alert("user already in that group");
+        alert("user already in "+this.selectedChanelName);
         this.selectedUserName=null;
         this.selectedChanelName=null;
 

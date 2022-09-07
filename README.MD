@@ -103,6 +103,43 @@ After user input all of the data then the data will be send to backend server an
 
 ![image](https://user-images.githubusercontent.com/51581298/188783910-6a4b1763-057e-44bc-a5c2-84ae003dc69b.png)
 If user deleted the popup message will show up and list will be update.
+Delete button will get the username from row and send it to deleteUser.js.
+Once the delteUser.js got the data and search the user array row from users.json.
+and rewrite the users.json and save it.
+
+4. Manage Group
+![image](https://user-images.githubusercontent.com/51581298/188785478-71ab8b83-9e3b-40a3-9d9f-f9af30ffab1c.png)
+
+Once the user login as groupadmin role account, the managegroup menu will be displayed on navigation bar.
 
 
+![image](https://user-images.githubusercontent.com/51581298/188785608-c92b43b1-74cb-44cf-b1b5-80d1e767ee4c.png)
+
+When the page start the page will get the username and send it to backend server so the page can get the which group admin the user is.
+By the group name we got the page will display what gorup manaer is.
+After we get the groupname page will show all of the user in that group as list in table.
+By clicking the check chanel groupmanager can see chich chanel the selected user currently in.
+
+![image](https://user-images.githubusercontent.com/51581298/188793764-a7f53aa2-b3b2-4f4c-b967-b970d0efc3c1.png)
+
+By clicking delete button admin can delete user from chanel.
+![image](https://user-images.githubusercontent.com/51581298/188793880-4e9ef558-c532-4be1-bbbe-e7ab4adcde75.png)
+By clicking the Add user button admin can add user in group.
+The input user name will be go through addgroupmember.js and check whether the input user exist and if the user exist then user will be added on group if not the js file return false. Once the component.ts receive the result  from js file, then according to the result the page will alert "added" or "user not found".
+
+[image](https://user-images.githubusercontent.com/51581298/188794563-15c9ac81-ebc7-490b-b11a-c8defc2355b2.png)
+By clicking left dropdown box admin can choose user name in group.
+
+![image](https://user-images.githubusercontent.com/51581298/188794848-59664bed-dbef-4f39-af86-4b93f5eca316.png)
+By clicking right dropdown box admin can choose chanel name in group.
+
+and once the Admin choose both option function AddUserInChanel in component.ts file will send the input data to addUserInChanel.js file.
+addUserInChanel.js file will check whether the user already in chanel.
+If user already in chanel send false 
+else send true
+If the component.ts file get true then alert "user added"
+If file receive false then alert "user already exist in +selected chanel name".
+
+5. Log out button.
+Once the user click log out button the sessionstorage will be cleared and return to login page.
 
