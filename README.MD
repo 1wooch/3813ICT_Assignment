@@ -180,11 +180,14 @@ e.g.:
 
 1. Login 
 <br/>
-------------------------------------------------------
-+ Input Value: UserName , User Password
--------------------------------------------------------
-+ Output: Ok:boolean, email,pwd (password), birthdate, age, role, username
--------------------------------------------------------
+------------------------------------------------------<br/>
+
++ Input Value (GET): UserName , User Password
+-------------------------------------------------------<br/>
+
++ Output (POST) : Ok:boolean, email,pwd (password), birthdate, age, role, username
+-------------------------------------------------------<br/>
+
 + explanation of function: 
     1. Read the users.json file and put the all of data in array.
     2. by using for loop search whether the entered username exist in array
@@ -192,18 +195,23 @@ e.g.:
     4. if evertrhing matched then send user information and boolean to front end.
     5. if they don't find any then send false to front end.
 
-------------------------------------------------------
-------------------------------------------------------
+------------------------------------------------------<br/>
+
+------------------------------------------------------<br/>
 
 
+<br/>
 
 2.  Account
 <br/>
-------------------------------------------------------
-+ Input Value: age,birthdate,email,username,role,pwd
--------------------------------------------------------
-+ Output: ok(boolean)
--------------------------------------------------------
+------------------------------------------------------<br/>
+
++ Input Value (GET) : age,birthdate,email,username,role,pwd
+-------------------------------------------------------<br/>
+
++ Output (POST) : ok(boolean)
+-------------------------------------------------------<br/>
+
 + explanation of function: 
     1. get a all of the new user information from frontend 
     2. Put all of the data in array
@@ -211,14 +219,18 @@ e.g.:
     4. splice that information and push new information in array.
     5. If javascript found the information then send true to frontend and 
        if not found then send false to frontend.
+<br/>
 
 3. Manage User  
 <br/>
-------------------------------------------------------
-+ Input Value: N/A (No Input)
--------------------------------------------------------
-+ Output: userArray (Array of User information)
--------------------------------------------------------
+------------------------------------------------------<br/>
+
++ Input Value (GET) : N/A (No Input)
+-------------------------------------------------------<br/>
+
++ Output (POST): userArray (Array of User information)
+-------------------------------------------------------<br/>
+
 + explanation of function: 
     1. Read all of the data from users.json file
     2. Add all of the json information in array
@@ -226,11 +238,14 @@ e.g.:
     
 4.Add User  
 <br/>
-------------------------------------------------------
-+ Input Value: username,pwd,email,age,birthdate,role
--------------------------------------------------------
-+ Output: ok (boolean)
--------------------------------------------------------
+------------------------------------------------------<br/>
+
++ Input Value (GET): username,pwd,email,age,birthdate,role
+-------------------------------------------------------<br/>
+
++ Output (POST) : ok (boolean)
+-------------------------------------------------------<br/>
+
 + explanation of function: 
     1. get all of the information from frontend.
     2. put all of the information in array.
@@ -239,71 +254,91 @@ e.g.:
     5. if the user doesn't exist then send treu and push the entered member information in user array.
     6. Write array in json file.
 
+<br/>
 
 5. Delete User  
 <br/>
-------------------------------------------------------
+------------------------------------------------------<br/>
+
 + Input Value (GET): username
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + Output (POST): ok
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + explanation of function: 
     1. GET username from frontend.
     2. check which row has the data of input user.
     3. if the loop find the user delete that array by using splice(i,1) and send true to frontend.
     4. if can't find user in arrray send false to frontend.
     5. write array in jsonfile and save it.
-    
+    <br/>
+
 6. group-admin-get  
 <br/>
-------------------------------------------------------
+------------------------------------------------------<br/>
+
 + Input Value (GET): username
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + Output (POST): ok (boolean), groupname (string)
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + explanation of function: 
     1. Get a username from frontend page.
     2. check whether the user is manageer or not. 
     3. if the user is manager send groupname that user is manager to frontend.
     4. if the user is not manager or no usere found send false to frontend.
 
+<br/>
 
 
 7. Get Group Member
 <br/>
-------------------------------------------------------
+------------------------------------------------------<br/>
+
 + Input Value (GET): groupname
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + Output (POST): ok (boolean), groupname, userlist, managerlist, chanels
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + explanation of function: 
     1. Get a groupname from group-admin-get.
     2. search the group data from group.json file.
     3. if the loop found the group then send groupname, userlist, managerlist, chanels and ok to frontend.
     4. if the loop doesn't found it send false to frontend.
 
+<br/>
 
 8.Delete Group Member  
 <br/>
-------------------------------------------------------
+------------------------------------------------------<br/>
+
 + Input Value (GET): username
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + Output (POST): ok (boolean)
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + explanation of function: 
     1. get a user name from frontend.
     2. by using for loop find where is the that user information in group.json
     3. by using splice delete that user name from group.json.
     4. if the user deleted send true to frontend.
 
+<br/>
 
 9. Add group Member
 <br/>
-------------------------------------------------------
+------------------------------------------------------<br/>
+
 + Input Value (GET): username, groupname
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + Output (POST): ok(boolean)
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + explanation of function: 
     1. get user and groupname from frontend.
     2. read group.json file and put all of the data in array.
@@ -311,15 +346,19 @@ e.g.:
     4. using for loop find where is the group is.
     5. by using the result from 3,4 add user in that group.
     6. write group array in group.json file.
+<br/>
 
 
 10. Search Chanal  
 <br/>
-------------------------------------------------------
+------------------------------------------------------<br/>
+
 + Input Value (GET): groupname, username
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + Output (POST): ok (boolean) , chanelList (arrray)
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + explanation of function: 
     1. get a groupname and username from frontend.
     2. read chanels.json and convert it as arrray.
@@ -332,11 +371,14 @@ e.g.:
     
 11. delete chanel  
 <br/>
-------------------------------------------------------
+------------------------------------------------------<br/>
+
 + Input Value (GET): username,chanelname
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + Output (POST): ok (boolean)
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + explanation of function: 
     1. get a username and chanelname from frontend
     2. read chanels.json and convert it as arrray.
@@ -348,11 +390,14 @@ e.g.:
 
 12.  Get ChanelList
 <br/>
-------------------------------------------------------
+------------------------------------------------------<br/>
+
 + Input Value (GET): groupname
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + Output (POST): ok (boolean), result (array)
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + explanation of function: 
     1. get groupname from frontend.
     2. convert chanels.json file to array
@@ -362,11 +407,14 @@ e.g.:
 
 13.  addUserInChanel
 <br/>
-------------------------------------------------------
+------------------------------------------------------<br/>
+
 + Input Value (GET): username, chanelname
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + Output (POST): ok (boolean)
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + explanation of function: 
     1. get username and chanelname from front end.
     2. convert chanels.json file to array
@@ -378,11 +426,14 @@ e.g.:
 
 14.  makeUserAdmin
 <br/>
-------------------------------------------------------
+------------------------------------------------------<br/>
+
 + Input Value (GET): username, groupname
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + Output (POST): ok (boolean)
--------------------------------------------------------
+-------------------------------------------------------<br/>
+
 + explanation of function: 
     1. get username and groupname from frontend.
     2. using given groupname find the group.
@@ -390,7 +441,7 @@ e.g.:
     4. if they have send ok=false to frontend.
     5. else put username in admin array and send true to frontend.
  -----------------------------------------------------
-
+<br/>
     
 # Json file
 
@@ -408,7 +459,8 @@ e.g.:
             "role":"role"
         }
     ]
------------------------------------------------------
+-----------------------------------------------------<br/>
+
 Description: users.json contain data about user.
 username is string and store name of user
 pwd is password and format is string.
@@ -416,7 +468,8 @@ email is string.
 age is string.
 birthdate is string and store user birthdate as yymmdd format.
 role is string represent role of the user.
------------------------------------------------------
+-----------------------------------------------------<br/>
+
 
 2. group.json
 <br/>
@@ -432,7 +485,8 @@ role is string represent role of the user.
             "admin":["testadmin"]
         }
     ]
------------------------------------------------------
+-----------------------------------------------------<br/>
+
 Description:
 group.json contain the data of group information.
 groupname is string that represent groupname.
@@ -441,7 +495,8 @@ group_manager_list is list of manager of group format is array and contain strin
 chanels is list of chanel format is array and contain string only in array.
 admin is array that reepresent admin that nominate by admin as list and contain only string.
 
------------------------------------------------------
+-----------------------------------------------------<br/>
+
 
 3. Chanels.json
 <br/>
@@ -456,7 +511,8 @@ admin is array that reepresent admin that nominate by admin as list and contain 
         "groupname": "test group"
         }
     ]
------------------------------------------------------
+-----------------------------------------------------<br/>
+
 Description:
 chanels.json contains the information of chanels.
 chnelname is string and contain chanelname 
