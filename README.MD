@@ -212,10 +212,12 @@ e.g.:
 <br/>
 ------------------------------------------------------<br/>
 
-+ Input Value (GET) : age,birthdate,email,username,role,pwd
++ Input Value (GET) : age,birthdate,email,username,role,pwd<br/>
+
 -------------------------------------------------------<br/>
 
-+ Output (POST) : ok(boolean)
++ Output (POST) : ok(boolean)<br/>
+
 -------------------------------------------------------<br/>
 
 + explanation of function: 
