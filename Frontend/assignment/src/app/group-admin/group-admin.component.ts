@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {NgbActiveModal, NgbModal,ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { group } from '@angular/animations';
+import { Directive, Output, EventEmitter, Input, SimpleChange} from '@angular/core';
 
 const httpOptions={
   headers:new HttpHeaders(
@@ -12,6 +13,19 @@ const httpOptions={
 })};
 const BACKEND_URL='http://localhost:3000';
 
+
+@Directive({
+  selector: '[onCreate]'
+})
+export class OnCreate {
+
+  @Output() onCreate: EventEmitter<any> = new EventEmitter<any>();
+  constructor() {}
+  ngOnInit() {      
+     this.onCreate.emit('dummy'); 
+  } 
+
+}
 @Component({
   selector: 'app-group-admin',
   templateUrl: './group-admin.component.html',
@@ -39,6 +53,7 @@ export class GroupAdminComponent implements OnInit {
   
   selectedUserName:any;
   selectedChanelName:any;
+  manager_list:any;
 
 
 
@@ -66,6 +81,7 @@ export class GroupAdminComponent implements OnInit {
             console.log("Received group member"+data.ok);
             //console.log(data.userlist); //list of user 
             this.userlist=data.userlist;
+            this.manager_list=data.managerlist;
 
           })
       }else{
@@ -207,14 +223,61 @@ public clickedchanelModalClose(){
       this.httpClient.post(BACKEND_URL+'/makeUserAdmin',{username:makeadminusername,groupname:this.groupname}).subscribe((data:any)=>{
         if(data.ok){
           alert(username+" is admin now");
+          window.location.reload();
+
         }
         else if(data.ok==false){
           alert("failed");
+          window.location.reload();
 
         }
 
   
       });
+
       
+    }
+   
+    public deleteAdmin(username:any){
+    
+      //console.log(this.username_save);//work;
+      console.log(username);
+
+      this.httpClient.post(BACKEND_URL+'/deleteGroupAdmin',{username:username}).subscribe((data:any)=>{
+        console.log(data.ok);
+        if(data.ok==true){
+          alert("Admin deleted");
+          window.location.reload();
+
+          
+        }
+      })
+  
+    }
+    public checkAdmin(username:any):any{
+      var isadmin:any;
+      isadmin=false;
+
+      //console.log(this.manager_list);
+      for (let i = 0; i < this.manager_list.length; i++) {
+        if (this.manager_list[i]==username){
+          isadmin=true;
+        }
+      }
+      return isadmin;
+
+    }
+    public checkUser(username:any):any{
+      var isUser:any;
+      isUser=true;
+
+      //console.log(this.manager_list);
+      for (let i = 0; i < this.manager_list.length; i++) {
+        if (this.manager_list[i]==username){
+          isUser=false;
+        }
+      }
+      return isUser;
+
     }
   }

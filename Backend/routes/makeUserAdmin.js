@@ -16,8 +16,8 @@ module.exports=function(req,res){
                
                     if(groupname==obj.group[i]['groupname']){
                         found_group=i;
-                        for (let j=0; j<obj.group[i]['admin'].length; j++){
-                            if (obj.group[i]['admin'][j]==username){
+                        for (let j=0; j<obj.group[i]['group_manager_list'].length; j++){
+                            if (obj.group[i]['group_manager_list'][j]==username){
                                 found=true;
                                 break
                             }
@@ -29,8 +29,8 @@ module.exports=function(req,res){
             if(found){
                 res.send({"ok":false});
             }else if(found==false){
-                obj.group[found_group]['admin'].push(username);
-                console.log(obj.group[found_group]['admin']);
+                obj.group[found_group]['group_manager_list'].push(username);
+                //console.log(obj.group[found_group]['group_manager_list']);
                 res.send({"ok":true});
             }
             let objJson=JSON.stringify(obj);

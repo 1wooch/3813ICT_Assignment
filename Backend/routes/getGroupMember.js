@@ -10,7 +10,7 @@ module.exports=function(req,res){
         if (error) return console.log(error);
         const userArray=JSON.parse(data);
         var found=false;
-        console.log("groupname"+groupname);
+        //console.log("groupname"+groupname);
         for (let i=0; i<userArray.group.length; i++){
             if (groupname==userArray.group[i]['groupname']){
                 res.send({"ok":true,

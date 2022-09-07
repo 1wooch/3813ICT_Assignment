@@ -16,7 +16,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GroupAdminComponent } from './group-admin/group-admin.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 
-
 const routes:Routes=[
   {path:'login',component:LoginComponent},
   {path:'account',component:AccountComponent}
@@ -31,7 +30,7 @@ const routes:Routes=[
     AccountComponent,
     ManageUserComponent,
     GroupAdminComponent,
-    MainpageComponent
+    MainpageComponent,
   ],
   imports: [
     BrowserModule,

@@ -31,5 +31,7 @@ app.post('/deleteCenel',require('./routes/deleteChanel'));
 app.post('/getChanel',require('./routes/getChanelList'));
 app.post('/addUserInChanel',require('./routes/addUserInChanel'));
 app.post('/makeUserAdmin',require('./routes/makeUserAdmin'));
+app.post('/checkGroupAdmin',require('./routes/checkGroupAdmin'));
+app.post('/deleteGroupAdmin',require('./routes/deleteGroupAdmin'));
 
 
