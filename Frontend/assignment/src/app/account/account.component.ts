@@ -20,12 +20,12 @@ export class AccountComponent implements OnInit {
     e_pwd:null
   }
   
-  username=sessionStorage.getItem('username');
-  birthdate=sessionStorage.getItem('birthdate');
-  age=sessionStorage.getItem('age');
-  email=sessionStorage.getItem('email');
-  role=sessionStorage.getItem('role');
-  pwd=sessionStorage.getItem('pwd');
+  username=localStorage.getItem('username');
+  birthdate=localStorage.getItem('birthdate');
+  age=localStorage.getItem('age');
+  email=localStorage.getItem('email');
+  role=localStorage.getItem('role');
+  pwd=localStorage.getItem('pwd');
 
 
 
@@ -44,12 +44,12 @@ export class AccountComponent implements OnInit {
     .subscribe((data:any)=>{
       if (data.ok==true){
         alert("Information has changed");
-        sessionStorage.setItem('username',e_username);
-        sessionStorage.setItem('email',e_email);
-        sessionStorage.setItem('age',e_age);
-        sessionStorage.setItem('role',e_role);
-        sessionStorage.setItem('birthdate',e_birthdate);
-        sessionStorage.setItem('pwd',e_pwd);
+        localStorage.setItem('username',e_username);
+        localStorage.setItem('email',e_email);
+        localStorage.setItem('age',e_age);
+        localStorage.setItem('role',e_role);
+        localStorage.setItem('birthdate',e_birthdate);
+        localStorage.setItem('pwd',e_pwd);
     
       }else if(data.ok==false){
         alert("Information added to new user");

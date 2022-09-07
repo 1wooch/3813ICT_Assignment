@@ -1,1 +1,19 @@
-{"group":[{"groupname":"test group","user_list":["wwc","test2","test3"],"group_manager_list":["Group Admin","test manager2"],"chanels":["test chanel"]}]}
+{
+    "group": [
+      {
+        "groupname": "test group",
+        "user_list": [
+          "wwc",
+          "test2",
+          "test3"
+        ],
+        "group_manager_list": [
+          "Group Admin",
+          "test manager2"
+        ],
+        "chanels": [
+          "test chanel"
+        ]
+      }
+    ]
+  }

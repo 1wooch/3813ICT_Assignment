@@ -29,8 +29,8 @@ export class GroupAdminComponent implements OnInit {
   public chanelmodal:boolean=false;
 
   userlist:any;
-  username=sessionStorage.getItem('username');
-  role=sessionStorage.getItem('role');
+  username=localStorage.getItem('username');
+  role=localStorage.getItem('role');
   groupname:any;
   deleteusername:any;
   public chanel_list:any;

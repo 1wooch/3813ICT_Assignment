@@ -20,8 +20,9 @@ There is 4 different pages.
 + app.component.html (Navbar)
 ![image](https://user-images.githubusercontent.com/51581298/188771669-f4eed2f9-edd5-40e6-989f-d6843c86f5e8.png)
 
+# Frontend
 ---------------------------------------------------------
-1. Login Page
+1. Login Page<br/>
 ![image](https://user-images.githubusercontent.com/51581298/188771861-d060c8fb-d4c8-4fa5-92b5-e26323688350.png)
 
 Login page contains 2 diffferent input text box for Username(ID) and Password.
@@ -42,7 +43,7 @@ In addition send data.ok which decide the login succes or not.
 If the data.ok =true => login successfully.
 If the data.ok = false=> login failed.
 
-once the frontend (login.component.ts) received the data and data.ok=true then store user detail in sessionstorage and redirect to account page.
+once the frontend (login.component.ts) received the data and data.ok=true then store user detail in localstorage and redirect to account page.
 If data.ok=false then send alert and refresh the page.
 ------------------------------
 ### When login failed
@@ -51,11 +52,12 @@ If data.ok=false then send alert and refresh the page.
 ### When login success
 ![image](https://user-images.githubusercontent.com/51581298/188772766-a4e0562b-f92e-437b-ab58-06d9b17bb161.png)
 ------------------------------------
-#### Session Storage
-![image](https://user-images.githubusercontent.com/51581298/188772841-fda7243a-14e1-4f9a-ad15-40d330b67279.png)
+#### Local Storage
+![image](https://user-images.githubusercontent.com/51581298/188822972-d869938c-a65f-4136-8f93-69563f9cb9dc.png)
+
 --------------------------------------------------
 
-2. Account Page
+2. Account Page<br/>
 
 ![image](https://user-images.githubusercontent.com/51581298/188777458-b3402ef7-03f5-43d5-af74-d43ed4884605.png)
 
@@ -66,7 +68,7 @@ Account page can change the user details.
 + Email
 + Role 
 + Password
- 
+ <br/>
  As we can see on the page, the user data will display on the page so user can recognize what is their detail is.
  As the user logged in Navigation bar has changed.
  The user logged in is as "superadmin" so the "Manage User" has showned and because it is logged in the "Log out " button has displayed.
@@ -76,7 +78,7 @@ If the user doesn't fill every form then the popup message will show
 
 
 ![image](https://user-images.githubusercontent.com/51581298/188779902-23fe0540-2c90-43aa-981b-19eaa642d0e9.png)
-If user enter all of the data then this message will popup and component.ts will change sessionstorage and data in backend server.
+If user enter all of the data then this message will popup and component.ts will change localstorage and data in backend server.
 
 once the user click the button then the input data in each textbox will be send to backend server.
 In backend server, they get all of the data and search the user information in user json file.
@@ -88,7 +90,7 @@ If the frontend receive false that means they couldn't find it so add as new use
 
 ---------------------------------------------
 
-3. Manage User
+3. Manage User<br/>
 Manage user page only access by navigation bar.
 and Manage user navigation bar menu will only display for user who has superadmin role.
 ![image](https://user-images.githubusercontent.com/51581298/188783038-78577176-2ccf-47d1-8354-05322722d83d.png)
@@ -107,7 +109,7 @@ Delete button will get the username from row and send it to deleteUser.js.
 Once the delteUser.js got the data and search the user array row from users.json.
 and rewrite the users.json and save it.
 
-4. Manage Group
+4. Manage Group<br/>
 ![image](https://user-images.githubusercontent.com/51581298/188785478-71ab8b83-9e3b-40a3-9d9f-f9af30ffab1c.png)
 
 Once the user login as groupadmin role account, the managegroup menu will be displayed on navigation bar.
@@ -140,6 +142,331 @@ else send true
 If the component.ts file get true then alert "user added"
 If file receive false then alert "user already exist in +selected chanel name".
 
-5. Log out button.
-Once the user click log out button the sessionstorage will be cleared and return to login page.
+5. Log out button.<br/>
+Once the user click log out button the localstorage will be cleared and return to login page.
+
+
+-----------------------------------------------------
+# Backend
+<br/>
+Backend has 2 different big files. 
+<br/>
+One is Data folder that contain all the information of chanels,group and users as json format.
+The other is routes file that contain all of the function as javascript file.
+
+To start server side (backend) need to type 
++ node server.js
+
+Once the frontend post the data then go to server.js and check which js file to use by using app.post on server.js.
+
+after that go to each js file and execute the file with post value using req.body and return the value by using res.send.
+
+Now This document go through each js file and how that works
+e.g.:
+    app.post('/login',require('./routes/login'));
+    app.post('/loginafter',require('./routes/account'));
+    app.post('/manageUser',require('./routes/manageUser'));
+    app.post('/addUser',require('./routes/addUser'));
+    app.post('/deleteUser',require('./routes/deleteUser'));
+    app.post('/groupadminget',require('./routes/group-admin-get'));
+    app.post('/getGroupMember',require('./routes/getGroupMember'));
+    app.post('/deleteGroupMember',require('./routes/deletegroupmember'));
+    app.post('/addGroupMember',require('./routes/addgroupmember'));
+    app.post('/searchChenel',require('./routes/searchChenal'));
+    app.post('/deleteCenel',require('./routes/deleteChanel'));
+    app.post('/getChanel',require('./routes/getChanelList'));
+    app.post('/addUserInChanel',require('./routes/addUserInChanel'));
+
+1. Login 
+<br/>
+------------------------------------------------------
++ Input Value: UserName , User Password
+-------------------------------------------------------
++ Output: Ok:boolean, email,pwd (password), birthdate, age, role, username
+-------------------------------------------------------
++ explanation of function: 
+    1. Read the users.json file and put the all of data in array.
+    2. by using for loop search whether the entered username exist in array
+    3. If the for loop find the user in array, then check whether the password is same
+    4. if evertrhing matched then send user information and boolean to front end.
+    5. if they don't find any then send false to front end.
+
+------------------------------------------------------
+------------------------------------------------------
+
+
+
+2.  Account
+<br/>
+------------------------------------------------------
++ Input Value: age,birthdate,email,username,role,pwd
+-------------------------------------------------------
++ Output: ok(boolean)
+-------------------------------------------------------
++ explanation of function: 
+    1. get a all of the new user information from frontend 
+    2. Put all of the data in array
+    3. By using for loop find where is the input user's information in array.
+    4. splice that information and push new information in array.
+    5. If javascript found the information then send true to frontend and 
+       if not found then send false to frontend.
+
+3. Manage User  
+<br/>
+------------------------------------------------------
++ Input Value: N/A (No Input)
+-------------------------------------------------------
++ Output: userArray (Array of User information)
+-------------------------------------------------------
++ explanation of function: 
+    1. Read all of the data from users.json file
+    2. Add all of the json information in array
+    3. Send the array to frontend.
+    
+4.Add User  
+<br/>
+------------------------------------------------------
++ Input Value: username,pwd,email,age,birthdate,role
+-------------------------------------------------------
++ Output: ok (boolean)
+-------------------------------------------------------
++ explanation of function: 
+    1. get all of the information from frontend.
+    2. put all of the information in array.
+    3. check whether the user already exist or not.
+    4. if the user exist send false to frontemd/
+    5. if the user doesn't exist then send treu and push the entered member information in user array.
+    6. Write array in json file.
+
+
+5. Delete User  
+<br/>
+------------------------------------------------------
++ Input Value (GET): username
+-------------------------------------------------------
++ Output (POST): ok
+-------------------------------------------------------
++ explanation of function: 
+    1. GET username from frontend.
+    2. check which row has the data of input user.
+    3. if the loop find the user delete that array by using splice(i,1) and send true to frontend.
+    4. if can't find user in arrray send false to frontend.
+    5. write array in jsonfile and save it.
+    
+6. group-admin-get  
+<br/>
+------------------------------------------------------
++ Input Value (GET): username
+-------------------------------------------------------
++ Output (POST): ok (boolean), groupname (string)
+-------------------------------------------------------
++ explanation of function: 
+    1. Get a username from frontend page.
+    2. check whether the user is manageer or not. 
+    3. if the user is manager send groupname that user is manager to frontend.
+    4. if the user is not manager or no usere found send false to frontend.
+
+
+
+7. Get Group Member
+<br/>
+------------------------------------------------------
++ Input Value (GET): groupname
+-------------------------------------------------------
++ Output (POST): ok (boolean), groupname, userlist, managerlist, chanels
+-------------------------------------------------------
++ explanation of function: 
+    1. Get a groupname from group-admin-get.
+    2. search the group data from group.json file.
+    3. if the loop found the group then send groupname, userlist, managerlist, chanels and ok to frontend.
+    4. if the loop doesn't found it send false to frontend.
+
+
+8.Delete Group Member  
+<br/>
+------------------------------------------------------
++ Input Value (GET): username
+-------------------------------------------------------
++ Output (POST): ok (boolean)
+-------------------------------------------------------
++ explanation of function: 
+    1. get a user name from frontend.
+    2. by using for loop find where is the that user information in group.json
+    3. by using splice delete that user name from group.json.
+    4. if the user deleted send true to frontend.
+
+
+9. Add group Member
+<br/>
+------------------------------------------------------
++ Input Value (GET): username, groupname
+-------------------------------------------------------
++ Output (POST): ok(boolean)
+-------------------------------------------------------
++ explanation of function: 
+    1. get user and groupname from frontend.
+    2. read group.json file and put all of the data in array.
+    3. using for loop check whether the user already exist or not.
+    4. using for loop find where is the group is.
+    5. by using the result from 3,4 add user in that group.
+    6. write group array in group.json file.
+
+
+10. Search Chanal  
+<br/>
+------------------------------------------------------
++ Input Value (GET): groupname, username
+-------------------------------------------------------
++ Output (POST): ok (boolean) , chanelList (arrray)
+-------------------------------------------------------
++ explanation of function: 
+    1. get a groupname and username from frontend.
+    2. read chanels.json and convert it as arrray.
+    3. using for loop find where is the group 
+    4. if the group has found find whether the user exist in that group
+    5. if the user exist in that group add the chanelnames in array
+    6. send the array of chanelnaeme to frontend with ok=true
+    7. if the result has not found send ok=false
+
+    
+11. delete chanel  
+<br/>
+------------------------------------------------------
++ Input Value (GET): username,chanelname
+-------------------------------------------------------
++ Output (POST): ok (boolean)
+-------------------------------------------------------
++ explanation of function: 
+    1. get a username and chanelname from frontend
+    2. read chanels.json and convert it as arrray.
+    3. check where is the input chenel data is.
+    4. if the chanel has found then find whether the username exist on that chenel.
+    5. if the user found then delte that user from user_list array using splice function.
+    6. send ok=true to frontend.
+
+
+12.  Get ChanelList
+<br/>
+------------------------------------------------------
++ Input Value (GET): groupname
+-------------------------------------------------------
++ Output (POST): ok (boolean), result (array)
+-------------------------------------------------------
++ explanation of function: 
+    1. get groupname from frontend.
+    2. convert chanels.json file to array
+    3. find the chanelname in input groupname by using for loop.
+    4. if the data found send result as array with ok=true
+    5. if the data not found send ok=false to frontend.
+
+13.  addUserInChanel
+<br/>
+------------------------------------------------------
++ Input Value (GET): username, chanelname
+-------------------------------------------------------
++ Output (POST): ok (boolean)
+-------------------------------------------------------
++ explanation of function: 
+    1. get username and chanelname from front end.
+    2. convert chanels.json file to array
+    3. check where is the input chanelname exist.
+    4. if the loop found chanelname find whether the user exist in that chanel.
+    5. if the user doesn't found push the input username in array and send ok=true.
+    6. if the user found then send ok=false to frontend 
+    7. write chanelarray on chanels.json file.
+
+    
+ -----------------------------------------------------
+
+    
+# Json file
+
+
+1. users.json
+<br/>
+    "users":[
+        {
+            "username":"username",
+            "pwd":"111111",
+            "email": "email@gmail.com",
+            "age": "11",
+            "birthdate":"111111", //yymmdd
+            "role":"role"
+        }
+    ]
+-----------------------------------------------------
+Description: users.json contain data about user.
+username is string and store name of user
+pwd is password and format is string.
+email is string.
+age is string.
+birthdate is string and store user birthdate as yymmdd format.
+role is string represent role of the user.
+-----------------------------------------------------
+
+2. group.json
+<br/>
+    "group":[
+        {
+            "groupname":"groupname",
+            "user_list":["user1","user2"],
+            "group_manager_list":["manager1","manager2"],
+            "chanels":[
+                "chanel1","chanel2"
+            ]
+        }
+    ]
+-----------------------------------------------------
+Description:
+group.json contain the data of group information.
+groupname is string that represent groupname.
+user_list is list of user format is array and contain string only in array.
+group_manager_list is list of manager of group format is array and contain string only in array.
+chanels is list of chanel format is array and contain string only in array.
+-----------------------------------------------------
+
+3. Chanels.json
+<br/>
+
+    "chanel":[
+        {
+        "chanelname": "chanelname",
+        "user_list": [
+          "test1",
+          "test2"
+        ],
+        "groupname": "test group"
+        }
+    ]
+-----------------------------------------------------
+Description:
+chanels.json contains the information of chanels.
+chnelname is string and contain chanelname 
+user_list is list of user in chanel format is array and contain only string.
+groupname is string and represent what group the chanel is in.
+-----------------------------------------------------
+
+
+
+    
+
+
+
+
+    
+
+    
+
+    
+
+
+    
+
+    
+
+
+    
+    
+
+    
 

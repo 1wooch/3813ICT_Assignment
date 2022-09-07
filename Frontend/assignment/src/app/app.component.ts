@@ -9,9 +9,9 @@ import { interval, Subscription } from 'rxjs';
 })
 
 export class AppComponent implements OnInit{
-  userName=sessionStorage.getItem('username');
+  userName=localStorage.getItem('username');
 
-  role=sessionStorage.getItem('role');    
+  role=localStorage.getItem('role');    
   superadmin=false;
   login=false;
   groupAdmin=false;
@@ -24,7 +24,7 @@ export class AppComponent implements OnInit{
 
   title = 'assignment';
   public logout(){
-    sessionStorage.clear();
+    localStorage.clear();
     //window.location.reload(); //refresh the current page
     //+redirect to login page?
     //window.location.reload(); //refresh the current page
@@ -71,7 +71,7 @@ export class AppComponent implements OnInit{
   }
   public userIsGroupAdmin(){
 
-    this.role=sessionStorage.getItem('role');
+    this.role=localStorage.getItem('role');
     //console.log(this.role);
 
     if(this.role==="groupadmin"){

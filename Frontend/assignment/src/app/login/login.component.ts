@@ -42,12 +42,12 @@ export class LoginComponent implements OnInit {
               //console.log(data.age); //working 22
               //console.log(data.email);
               //console.log(data.birthdate)
-              sessionStorage.setItem('username',data.username);
-              sessionStorage.setItem('email',data.email);
-              sessionStorage.setItem('age',data.age);
-              sessionStorage.setItem('role',data.role);
-              sessionStorage.setItem('birthdate',data.birthdate);
-              sessionStorage.setItem('pwd',data.pwd);
+              localStorage.setItem('username',data.username);
+              localStorage.setItem('email',data.email);
+              localStorage.setItem('age',data.age);
+              localStorage.setItem('role',data.role);
+              localStorage.setItem('birthdate',data.birthdate);
+              localStorage.setItem('pwd',data.pwd);
               //window.location.reload();
 
               this.router.navigateByUrl('account');

@@ -7,7 +7,7 @@ module.exports=function(req,res){
     var result=[];
     found=false;
 
-    console.log(groupname+"test1")
+    //console.log(groupname+"test1")
     fs.readFile('./Data/chanels.json','utf8',function(error,data){
         if (error) return console.log(error);
         const userArray=JSON.parse(data);
