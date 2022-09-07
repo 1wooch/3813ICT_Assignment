@@ -552,10 +552,55 @@ user_list is list of user in chanel format is array and contain only string.
 groupname is string and represent what group the chanel is in.
 -----------------------------------------------------
 
+# MVC EXAMPLE
+1. LOGIN PAGE
+
+VIEW:login.component.html
+
+CONTROLLER  | MODEL
+------------- | -------------
+loginfunc()  | router/login
+
+2. ACCOUNT PAGE
+
+VIEW: account.component.html
+CONTROLLER  | MODEL
+------------- | -------------
+edit()  | router/loginafter
 
 
-    
+3. GROUP ADMIN PAGE
 
+VIEW: group-admin.component.html
+
+CONTROLLER  | MODEL
+------------- | -------------
+getUser()  | router/groupminget
+getUser()  | routes/getGroupMember
+clickedModalClose()| N/A
+clickedModal() | N/A
+clickedchanelModalClose() | N/A
+removeUser() | router/deleteGroupMember
+addUser() | router/addGroupMember
+deleteChanel(chanelname:any) | router/deleteCenel
+lickedchanelModal(groupname:any,username:any) | router/searchChenel
+addUserChanel() | router/groupadminget
+addUserChanel() | router/getChanel
+open(content:any) | N/A
+AddUserInChanel() | router/addUserInChanel
+MakeAdmin(username:any) | router/makeUserAdmin
+
+
+4. MANAGE USER PAGE
+
+VIEW: manage-user.component.html
+CONTROLLER  | MODEL
+------------- | -------------
+clickedModalClose() | N/A
+clickedModal() | N/A
+getUser() | router/manageUser
+addUser() | router/addUser
+removeUser(username:string) | router/deleteUser
 
 
 
