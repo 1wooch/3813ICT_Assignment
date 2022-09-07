@@ -30,5 +30,6 @@ app.post('/searchChenel',require('./routes/searchChenal'));
 app.post('/deleteCenel',require('./routes/deleteChanel'));
 app.post('/getChanel',require('./routes/getChanelList'));
 app.post('/addUserInChanel',require('./routes/addUserInChanel'));
+app.post('/makeUserAdmin',require('./routes/makeUserAdmin'));
 
 

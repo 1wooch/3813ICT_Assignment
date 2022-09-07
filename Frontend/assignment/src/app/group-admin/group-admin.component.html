@@ -30,8 +30,9 @@
                 <th scope="col">Group Name</th>
                 <th scope="col">User Name</th>
                 <th scope="col">Chanels</th> 
-
                 <th scope="col"></th>
+                <th scope="col"></th>
+
               </tr>
             </thead>
             <tbody>
@@ -41,6 +42,8 @@
                 <td> <button class="btn btn-success" (click)="clickedchanelModal(this.groupname,row)">Check Chanel</button>
                 </td>
                 <td><button (click)="removeUser(row)" class="btn btn-danger">DELETE</button></td>
+                <td><button (click)="MakeAdmin(row)" class="btn btn-success">Make Admin</button></td>
+
               </tr>
 
             </tbody>

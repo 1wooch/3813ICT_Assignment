@@ -199,8 +199,22 @@ public clickedchanelModalClose(){
 
       }
      });
-    }
- 
+    }}
 
+    public MakeAdmin(username:any){
+      var makeadminusername=username;
+      //console.log(this.groupname);
+      this.httpClient.post(BACKEND_URL+'/makeUserAdmin',{username:makeadminusername,groupname:this.groupname}).subscribe((data:any)=>{
+        if(data.ok){
+          alert(username+" is admin now");
+        }
+        else if(data.ok==false){
+          alert("failed");
+
+        }
+
+  
+      });
+      
+    }
   }
-}

@@ -114,13 +114,14 @@ and rewrite the users.json and save it.
 
 Once the user login as groupadmin role account, the managegroup menu will be displayed on navigation bar.
 
-
-![image](https://user-images.githubusercontent.com/51581298/188785608-c92b43b1-74cb-44cf-b1b5-80d1e767ee4c.png)
+![image](https://user-images.githubusercontent.com/51581298/188828666-6246a652-9a53-413c-9dd2-be943dc99ad4.png)
 
 When the page start the page will get the username and send it to backend server so the page can get the which group admin the user is.
 By the group name we got the page will display what gorup manaer is.
 After we get the groupname page will show all of the user in that group as list in table.
 By clicking the check chanel groupmanager can see chich chanel the selected user currently in.
+By clicking make admin button admin can make user into admin.
+
 
 ![image](https://user-images.githubusercontent.com/51581298/188793764-a7f53aa2-b3b2-4f4c-b967-b970d0efc3c1.png)
 
@@ -375,7 +376,19 @@ e.g.:
     6. if the user found then send ok=false to frontend 
     7. write chanelarray on chanels.json file.
 
-    
+14.  makeUserAdmin
+<br/>
+------------------------------------------------------
++ Input Value (GET): username, groupname
+-------------------------------------------------------
++ Output (POST): ok (boolean)
+-------------------------------------------------------
++ explanation of function: 
+    1. get username and groupname from frontend.
+    2. using given groupname find the group.
+    3. after find group check whether the group already has same admin or not.
+    4. if they have send ok=false to frontend.
+    5. else put username in admin array and send true to frontend.
  -----------------------------------------------------
 
     
@@ -413,7 +426,8 @@ role is string represent role of the user.
             "group_manager_list":["manager1","manager2"],
             "chanels":[
                 "chanel1","chanel2"
-            ]
+            ],
+            "admin":["testadmin"]
         }
     ]
 -----------------------------------------------------
@@ -423,6 +437,8 @@ groupname is string that represent groupname.
 user_list is list of user format is array and contain string only in array.
 group_manager_list is list of manager of group format is array and contain string only in array.
 chanels is list of chanel format is array and contain string only in array.
+admin is array that reepresent admin that nominate by admin as list and contain only string.
+
 -----------------------------------------------------
 
 3. Chanels.json
