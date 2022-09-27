@@ -12,10 +12,15 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname+'')); //location of angular file 
 console.log(__dirname);
 
+const client = require('./routes/database');
+client.connect().then(console.log("db connected"));
+require('./routes/test.js')(app,client);
+
 const http = require('http').Server(app);
 var server=http.listen(3000,function(){
     console.log("server Listening on port :3000");
 })
+
 
 app.post('/login',require('./routes/login'));
 app.post('/loginafter',require('./routes/account'));
@@ -35,3 +40,17 @@ app.post('/checkGroupAdmin',require('./routes/checkGroupAdmin'));
 app.post('/deleteGroupAdmin',require('./routes/deleteGroupAdmin'));
 
 
+
+//app.post('/test',require('./routes/test'));
+
+
+// app.get('/test', (req, res) => {
+//     const collection = client.db('mydb').collection('test');
+//      collection.insertOne(
+//       {
+//         username: "Hi",
+//         password: "Super secure",
+//         email: "hi2",
+//       }
+//     );
+// });
