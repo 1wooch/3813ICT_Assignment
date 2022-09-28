@@ -5,6 +5,8 @@ var cors=require('cors');
 app.use(cors());
 
 const bodyParser = require('body-parser');
+const { MongoClient } = require('mongodb');
+const { default: mongoose } = require('mongoose');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
@@ -12,9 +14,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname+'')); //location of angular file 
 console.log(__dirname);
 
-const client = require('./routes/database');
-client.connect().then(console.log("db connected"));
-require('./routes/test.js')(app,client);
+
 
 const http = require('http').Server(app);
 var server=http.listen(3000,function(){
@@ -38,6 +38,7 @@ app.post('/addUserInChanel',require('./routes/addUserInChanel'));
 app.post('/makeUserAdmin',require('./routes/makeUserAdmin'));
 app.post('/checkGroupAdmin',require('./routes/checkGroupAdmin'));
 app.post('/deleteGroupAdmin',require('./routes/deleteGroupAdmin'));
+app.post('/get_chatroom_list',require('./routes/get_chatroom_list'));
 
 
 
@@ -54,3 +55,28 @@ app.post('/deleteGroupAdmin',require('./routes/deleteGroupAdmin'));
 //       }
 //     );
 // });
+
+
+//Doom of MONGO
+//---------------------------------------------------------------------------------------------------
+// const url='mongodb+srv://onechoo1106:abc1234@mydb.swwyly1.mongodb.net/?retryWrites=true&w=majority';
+// mongoose.connect(url,function(err){
+//     if(err)throw err;
+//     const dbName='mydb';
+
+//     let db = mongoose.connection.dbName;
+//     const result = await db.collection('test').find().toArray();
+
+
+// })
+
+
+
+// const url='mongodb://localhost:27017';
+// MongoClient.connect(url,{maxPoolSize:10,useNewUrlParser:true,useUnifiedTopology:true},function(err,client){
+//     if(err){return console.log(err)}
+//         const dbName='mydb';
+//         const db = client.db(dbName);
+//         require('./routes/test.js')(app,client);
+
+// })

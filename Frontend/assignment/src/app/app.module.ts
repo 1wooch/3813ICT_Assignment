@@ -15,6 +15,8 @@ import { ManageUserComponent } from './manage-user/manage-user.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GroupAdminComponent } from './group-admin/group-admin.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
+import { ChatroomListComponent } from './chatroom-list/chatroom-list.component';
+import { ChatRoomComponent } from './chat-room/chat-room.component';
 
 const routes:Routes=[
   {path:'login',component:LoginComponent},
@@ -31,6 +33,8 @@ const routes:Routes=[
     ManageUserComponent,
     GroupAdminComponent,
     MainpageComponent,
+    ChatroomListComponent,
+    ChatRoomComponent,
   ],
   imports: [
     BrowserModule,

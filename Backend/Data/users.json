@@ -1,1 +1,60 @@
-{"users":[{"username":"wwc","pwd":"661130","email":"wwc@gmail.com","age":"22","birthdate":"991106","role":"superadmin"},{"username":"Group Admin","role":"groupadmin","email":"groupadmin@gmail.com","pwd":"661130","birthdate":"1909-12-25","age":109},{"username":"User 1","role":"user","email":"user@email.com","pwd":"661130","birthdate":"2002-01-06","age":20},{"username":"eiz","pwd":"1111","email":"11@gmail.com","age":"11","birthdate":"11","role":"11"},{"username":"choiwonwoo","pwd":"661130","email":"wonwoo@gmail.com","age":"35","birthdate":"101106","role":"user"},{"username":"3813ICT","pwd":"661130","email":"3813@gmail.com","age":"20","birthdate":"991106","role":"groupadmin"},{"username":"11","pwd":"661130","email":"admin@email.com","age":"11","birthdate":"11","role":"groupadmin"}]}
+{
+    "users": [
+      {
+        "username": "wwc",
+        "pwd": "661130",
+        "email": "wwc@gmail.com",
+        "age": "22",
+        "birthdate": "991106",
+        "role": "superadmin"
+      },
+      {
+        "username": "Group Admin",
+        "role": "groupadmin",
+        "email": "groupadmin@gmail.com",
+        "pwd": "661130",
+        "birthdate": "1909-12-25",
+        "age": 109
+      },
+      {
+        "username": "User 1",
+        "role": "user",
+        "email": "user@email.com",
+        "pwd": "661130",
+        "birthdate": "2002-01-06",
+        "age": 20
+      },
+      {
+        "username": "eiz",
+        "pwd": "1111",
+        "email": "11@gmail.com",
+        "age": "11",
+        "birthdate": "11",
+        "role": "11"
+      },
+      {
+        "username": "choiwonwoo",
+        "pwd": "661130",
+        "email": "wonwoo@gmail.com",
+        "age": "35",
+        "birthdate": "101106",
+        "role": "user"
+      },
+      {
+        "username": "3813ICT",
+        "pwd": "661130",
+        "email": "3813@gmail.com",
+        "age": "20",
+        "birthdate": "991106",
+        "role": "groupadmin"
+      },
+      {
+        "username": "11",
+        "pwd": "661130",
+        "email": "admin@email.com",
+        "age": "11",
+        "birthdate": "11",
+        "role": "groupadmin"
+      }
+    ]
+  }

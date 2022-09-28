@@ -6,7 +6,8 @@ import { AccountComponent } from './account/account.component';
 import { ManageUserComponent } from './manage-user/manage-user.component';
 import { GroupAdminComponent } from './group-admin/group-admin.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
-
+import { ChatroomListComponent } from './chatroom-list/chatroom-list.component';
+import { ChatRoomComponent } from './chat-room/chat-room.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,10 @@ const routes: Routes = [
   {path:'account',component:AccountComponent},
   {path:'manageuser',component:ManageUserComponent},
   {path:'groupadmin',component:GroupAdminComponent},
-  {path:'mainpage',component:MainpageComponent}
+  {path:'mainpage',component:MainpageComponent},
+  {path:'chatroom-list',component:ChatroomListComponent},
+  {path:'chatroom',component:ChatRoomComponent},
+
 ];
 
 @NgModule({

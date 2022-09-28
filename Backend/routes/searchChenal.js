@@ -30,6 +30,8 @@ module.exports=function(req,res){
         //console.log(result);
 
         if(found=true){
+        console.log(result);
+        
         res.send({ok:true,chanelList:result});
         }
         else{

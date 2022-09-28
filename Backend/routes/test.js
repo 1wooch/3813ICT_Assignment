@@ -1,12 +1,13 @@
-const MongoClient = require('mongodb').MongoClient;
-
 module.exports = function (app, client) {
+  console.log("1");
   app.post('/test', function (req, res) {
     const collection = client.db('mydb').collection('test');
     collection.find({ username: "WWC" }).toArray(function(err, data) { 
       //console.log(client.db('mydb').getCollectionNames());
     });
     //console.log(client.db('mydb').getCollectionNames());
+    console.log("2");
+
     console.log(collection)
     console.log(req.body);
     collection.findOne({
