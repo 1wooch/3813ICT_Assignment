@@ -17,10 +17,17 @@ import { GroupAdminComponent } from './group-admin/group-admin.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { ChatroomListComponent } from './chatroom-list/chatroom-list.component';
 import { ChatRoomComponent } from './chat-room/chat-room.component';
-
+//Service-----------------------------------------------------------
+import { SocketService } from 'src/service/socket.service';
+import { Socket } from 'socket.io';
 const routes:Routes=[
   {path:'login',component:LoginComponent},
-  {path:'account',component:AccountComponent}
+  {path:'account',component:AccountComponent},
+  {path:'chat_room',component:ChatRoomComponent},
+  {path:'chatroom_list',component:ChatroomListComponent},
+  {path:'groupadmin',component:GroupAdminComponent},
+  {path:'manageuser',component:ManageUserComponent},
+
 ];
 
 
@@ -47,7 +54,7 @@ const routes:Routes=[
     ReactiveFormsModule,
     NgbModule
   ],
-  providers: [HttpClientModule],
+  providers: [HttpClientModule,SocketService],
   bootstrap: [AppComponent],
   exports:[RouterModule]
 })
