@@ -1,6 +1,6 @@
 import { Component, forwardRef, OnInit } from '@angular/core';
 import { HttpClient,HttpHeaders } from '@angular/common/http';
-import {Router} from '@angular/router';
+import {Router, TitleStrategy} from '@angular/router';
 import {NgbActiveModal, NgbModal,ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { group } from '@angular/animations';
@@ -42,10 +42,10 @@ export class GroupAdminComponent implements OnInit {
   public modal:boolean=false;
   public chanelmodal:boolean=false;
 
-  userlist:any;
+  userlist:any=[];
   username=localStorage.getItem('username');
   role=localStorage.getItem('role');
-  groupname:any;
+  group_list:any;
   deleteusername:any;
   public chanel_list:any;
   chenel_name:any;
@@ -53,7 +53,7 @@ export class GroupAdminComponent implements OnInit {
   
   selectedUserName:any;
   selectedChanelName:any;
-  manager_list:any;
+  manager_list:any=[];
 
 
 
@@ -66,22 +66,31 @@ export class GroupAdminComponent implements OnInit {
   ngOnInit(): void {this.getUser(),this.addUserChanel()}
 
   public getUser(){
+    this.manager_list=[];
+    this.userlist=[];
+
     //console.log(this.username); //work
     this.httpClient.post(BACKEND_URL+'/groupadminget',{username:this.username})
     .subscribe((data:any)=>{
-      console.log(data.ok);
+      //console.log(data.ok);
+      //console.log(data.group_list);
 
       //console.log(data.groupname);
-      this.groupname=data.groupname;
+      this.group_list=data.group_list;
       //console.log(this.groupname+"????");
       if (data.ok==true){
         console.log("found your group!");
-        this.httpClient.post(BACKEND_URL+'/getGroupMember',{groupname:this.groupname}).subscribe(
+        this.httpClient.post(BACKEND_URL+'/getGroupMember',{group_list:this.group_list}).subscribe(
           (data:any)=>{
-            console.log("Received group member"+data.ok);
-            //console.log(data.userlist); //list of user 
-            this.userlist=data.userlist;
-            this.manager_list=data.managerlist;
+            // console.log("Received group member"+data.ok);
+            // //console.log(data.userlist); //list of user 
+            // this.userlist=data.userlist;
+            // this.manager_list=data.managerlist;
+            this.userlist=data.group_member_list;
+            this.manager_list=data.group_admin_list;
+            //console.log(this.userlist);
+            console.log(this.manager_list[0][1].length);
+            
 
           })
       }else{
@@ -105,7 +114,7 @@ public clickedchanelModalClose(){
 
   public removeUser(deleteusername:any){
     console.log("username delte"+deleteusername);
-    this.httpClient.post(BACKEND_URL+'/deleteGroupMember',{username:deleteusername,groupname:this.groupname})
+    this.httpClient.post(BACKEND_URL+'/deleteGroupMember',{username:deleteusername,groupname:this.group_list})
     .subscribe((data:any)=>{
       if(data.ok){
         alert("User Deleted");
@@ -220,7 +229,7 @@ public clickedchanelModalClose(){
     public MakeAdmin(username:any){
       var makeadminusername=username;
       //console.log(this.groupname);
-      this.httpClient.post(BACKEND_URL+'/makeUserAdmin',{username:makeadminusername,groupname:this.groupname}).subscribe((data:any)=>{
+      this.httpClient.post(BACKEND_URL+'/makeUserAdmin',{username:makeadminusername,groupname:this.group_list}).subscribe((data:any)=>{
         if(data.ok){
           alert(username+" is admin now");
           window.location.reload();
@@ -242,9 +251,9 @@ public clickedchanelModalClose(){
     
       //console.log(this.username_save);//work;
       console.log(username);
-      console.log(this.groupname);
+      console.log(this.group_list);
       
-      this.httpClient.post(BACKEND_URL+'/deleteGroupAdmin',{username:username,groupname:this.groupname}).subscribe((data:any)=>{
+      this.httpClient.post(BACKEND_URL+'/deleteGroupAdmin',{username:username,groupname:this.group_list}).subscribe((data:any)=>{
         console.log(data.ok);
         if(data.ok==true){
           alert("Admin deleted");
@@ -258,12 +267,14 @@ public clickedchanelModalClose(){
     public checkAdmin(username:any):any{
       var isadmin:any;
       isadmin=false;
-
-      //console.log(this.manager_list);
+      //console.log(this.manager_list.length); //1
+      //console.log(this.manager_list[0][1].length);//2
+      console.log(username[1])
       for (let i = 0; i < this.manager_list.length; i++) {
-        if (this.manager_list[i]==username){
+        for (let j=0; j<this.manager_list[i][1].length; j++){
+        if (this.manager_list[i][1][j]==username[1]){
           isadmin=true;
-        }
+        }}
       }
       return isadmin;
 
@@ -271,12 +282,15 @@ public clickedchanelModalClose(){
     public checkUser(username:any):any{
       var isUser:any;
       isUser=true;
+      console.log(username[1])
 
       //console.log(this.manager_list);
       for (let i = 0; i < this.manager_list.length; i++) {
-        if (this.manager_list[i]==username){
-          isUser=false;
-        }
+        for (let j=0; j<this.manager_list[i][1].length; j++){
+        if (this.manager_list[i][1][j]==username[1]){
+        isUser=false;
+        
+        }}
       }
       return isUser;
 

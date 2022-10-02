@@ -43,33 +43,53 @@ MongoClient.connect(url, {
     useNewUrlParser: true
 }, function(err, client) {
     if(err){return console.log(err)}
-        const dbname='mydb1';
+        const dbname='3813db';
         const db = client.db(dbname);
         console.log("connected to mongo");
         
+        require('./routes/login.js')(db,app);
+        // require('./routes/account.js')(db,app); //same as add user
+        require('./routes/addUser.js')(db,app); //+edit
+        require('./routes/addUserInChanel.js')(db,app);
+        // require('./routes/addgroupmember.js')(db,app);
+        // require('./routes/checkGroupAdmin.js')(db,app);
+        // require('./routes/database.js')(db,app);
+        // require('./routes/deleteChanel.js')(db,app);
+        // require('./routes/deleteGroupAdmin.js')(db,app);
+        require('./routes/deleteUser.js')(db,app);
+        // require('./routes/deletegroupmember.js')(db,app);
+        // require('./routes/getChanelList.js')(db,app);
+        require('./routes/getGroupMember.js')(db,app);
+        // require('./routes/get_chatroom_list.js')(db,app);
+        require('./routes/groupadminget.js')(db,app);
+        // require('./routes/makeUserAdmin.js')(db,app);
+        require('./routes/manageUser.js')(db,app);
+        // require('./routes/searchChenal.js')(db,app);
+
+
         //require('./routes/api-add.js')(db,app);
         
         //require('./listen.js').listen(http,3000);
         
 })
 //---------------------------------------------------------------
-app.post('/login',require('./routes/login'));
-app.post('/loginafter',require('./routes/account'));
-app.post('/manageUser',require('./routes/manageUser'));
-app.post('/addUser',require('./routes/addUser'));
-app.post('/deleteUser',require('./routes/deleteUser'));
-app.post('/groupadminget',require('./routes/group-admin-get'));
-app.post('/getGroupMember',require('./routes/getGroupMember'));
-app.post('/deleteGroupMember',require('./routes/deletegroupmember'));
-app.post('/addGroupMember',require('./routes/addgroupmember'));
-app.post('/searchChenel',require('./routes/searchChenal'));
-app.post('/deleteCenel',require('./routes/deleteChanel'));
-app.post('/getChanel',require('./routes/getChanelList'));
-app.post('/addUserInChanel',require('./routes/addUserInChanel'));
-app.post('/makeUserAdmin',require('./routes/makeUserAdmin'));
-app.post('/checkGroupAdmin',require('./routes/checkGroupAdmin'));
-app.post('/deleteGroupAdmin',require('./routes/deleteGroupAdmin'));
-app.post('/get_chatroom_list',require('./routes/get_chatroom_list'));
+// app.post('/login',require('./routes/login'));
+// app.post('/loginafter',require('./routes/account'));
+// app.post('/manageUser',require('./routes/manageUser'));
+// app.post('/addUser',require('./routes/addUser'));
+// app.post('/deleteUser',require('./routes/deleteUser'));
+// app.post('/groupadminget',require('./routes/group-admin-get'));
+// app.post('/getGroupMember',require('./routes/getGroupMember'));
+// app.post('/deleteGroupMember',require('./routes/deletegroupmember'));
+// app.post('/addGroupMember',require('./routes/addgroupmember'));
+// app.post('/searchChenel',require('./routes/searchChenal'));
+// app.post('/deleteCenel',require('./routes/deleteChanel'));
+// app.post('/getChanel',require('./routes/getChanelList'));
+// app.post('/addUserInChanel',require('./routes/addUserInChanel'));
+// app.post('/makeUserAdmin',require('./routes/makeUserAdmin'));
+// app.post('/checkGroupAdmin',require('./routes/checkGroupAdmin'));
+// app.post('/deleteGroupAdmin',require('./routes/deleteGroupAdmin'));
+// app.post('/get_chatroom_list',require('./routes/get_chatroom_list'));
 
 
 

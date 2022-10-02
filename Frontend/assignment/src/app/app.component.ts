@@ -74,7 +74,7 @@ export class AppComponent implements OnInit{
     this.role=localStorage.getItem('role');
     //console.log(this.role);
 
-    if(this.role==="groupadmin"){
+    if(this.role==="groupadmin" ||this.role==="superadmin"){
       this.groupAdmin=true;
       console.log("group admin"+this.groupAdmin);
     }else{

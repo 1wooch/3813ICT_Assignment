@@ -40,7 +40,7 @@ export class AccountComponent implements OnInit {
     //console.log(e_email,e_role,e_birthdate,e_age,e_username); //working
   
     
-    this.httpClient.post(BACKEND_URL+'/loginafter',{pwd:e_pwd,username:e_username,email:e_email,age:e_age,role:e_role,birthdate:e_birthdate})
+    this.httpClient.post(BACKEND_URL+'/addUser',{pwd:e_pwd,username:e_username,email:e_email,age:e_age,role:e_role,birthdate:e_birthdate})
     .subscribe((data:any)=>{
       if (data.ok==true){
         alert("Information has changed");

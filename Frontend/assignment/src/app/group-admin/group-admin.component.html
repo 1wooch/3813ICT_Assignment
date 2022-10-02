@@ -5,7 +5,7 @@
     </head>
     <body>
       <div>
-        <h1>You are Admin of group:{{groupname}}</h1>
+        <h1>You are Admin of group:{{group_list}}</h1>
         <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add User</button>
         <select [(ngModel)]="selectedUserName"   (change)="AddUserInChanel()">
           <option *ngFor="let data of userlist" [value]="data">
@@ -37,9 +37,10 @@
             </thead>
             <tbody>
               <tr *ngFor="let row of userlist">
-                <td>{{this.groupname}}</td>
-                <td>{{row}}</td>
-                <td> <button class="btn btn-success" (click)="clickedchanelModal(this.groupname,row)">Check Chanel</button>
+                
+                <td>{{row[0]}}</td>
+                <td>{{row[1]}}</td>
+                <td> <button class="btn btn-success" (click)="clickedchanelModal(this.group_list,row)">Check Chanel</button>
                 </td>
                 <td><button (click)="removeUser(row)" class="btn btn-danger">DELETE</button></td>
                 <td><button  *ngIf="checkUser(row)"(click)="MakeAdmin(row)" class="btn btn-success">Make Admin</button>

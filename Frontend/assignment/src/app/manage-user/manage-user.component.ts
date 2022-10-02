@@ -50,7 +50,8 @@ export class ManageUserComponent implements OnInit {
   public getUser(){
 
     this.httpClient.post(BACKEND_URL+'/manageUser',null).subscribe((data:any)=>{
-      this.userInfo=data.userArray.users;
+      this.userInfo=data;
+      console.log(data[0]);
 
     });
   }
