@@ -1,11 +1,31 @@
 var fs =require('fs');
 
 module.exports=function(client,app){
-    app.post('')
+    app.post('/makeUserAdmin',function(req,res){
+        groupname=req.body.groupname;
+        username=req.body.username;
+        console.log(groupname);
+        console.log('username',username);
+
+        const collection=client.collection('group');
+        collection.update({groupname:groupname},
+        {$push:{group_manager_list:username}},function(err){
+            if(err){
+                console.log("something went wrong"); 
+                res.send({ok:false});
+
+            }else{
+                res.send({ok:true});
+                console.log("added");
+            }
+        });
+
+        //collection.update({groupname:req.body.groupname})
+        
+    })
 }
 
-
-
+// }
 
 // const { group } = require('console');
 // var fs = require('fs');

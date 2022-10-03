@@ -9,7 +9,7 @@
         <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add User</button>
         <select [(ngModel)]="selectedUserName"   (change)="AddUserInChanel()">
           <option *ngFor="let data of userlist" [value]="data">
-              {{data}}
+              {{data[1]}}
           </option>
         </select>  
         <select [(ngModel)]="selectedChanelName"   (change)="AddUserInChanel()">
@@ -42,9 +42,9 @@
                 <td>{{row[1]}}</td>
                 <td> <button class="btn btn-success" (click)="clickedchanelModal(this.group_list,row)">Check Chanel</button>
                 </td>
-                <td><button (click)="removeUser(row)" class="btn btn-danger">DELETE</button></td>
-                <td><button  *ngIf="checkUser(row)"(click)="MakeAdmin(row)" class="btn btn-success">Make Admin</button>
-                <button *ngIf="checkAdmin(row)"(click)="deleteAdmin(row)" class="btn btn-danger">DELETE Admin</button></td>
+                <td><button (click)="removeUser(row[1],row[0])" class="btn btn-danger">DELETE</button></td>
+                <td><button  *ngIf="checkUser(row)"(click)="MakeAdmin(row[1],row[0])" class="btn btn-success">Make Admin</button>
+                <button *ngIf="checkAdmin(row)"(click)="deleteAdmin(row[1],row[0])" class="btn btn-danger">DELETE Admin</button></td>
 
 
               </tr>

@@ -112,9 +112,9 @@ public clickedchanelModalClose(){
   }
 
 
-  public removeUser(deleteusername:any){
+  public removeUser(deleteusername:any,deletegrouname:any){
     console.log("username delte"+deleteusername);
-    this.httpClient.post(BACKEND_URL+'/deleteGroupMember',{username:deleteusername,groupname:this.group_list})
+    this.httpClient.post(BACKEND_URL+'/deletegroupmember',{username:deleteusername,groupname:deletegrouname})
     .subscribe((data:any)=>{
       if(data.ok){
         alert("User Deleted");
@@ -125,9 +125,9 @@ public clickedchanelModalClose(){
   }
 
   public addUser(){
-    
+    console.log(this.group_list);
     const{e_email,e_role,e_age,e_birthdate,e_username,e_pwd}=this.form;
-    this.httpClient.post(BACKEND_URL+'/addGroupMember',{username:e_username})
+    this.httpClient.post(BACKEND_URL+'/addgroupmember',{username:e_username,groupname:this.group_list})
     .subscribe((data:any)=>{
       console.log(data.ok);
 
@@ -145,7 +145,7 @@ public clickedchanelModalClose(){
     //console.log(this.username_save);//work;
     console.log(chanelname);
 
-    this.httpClient.post(BACKEND_URL+'/deleteCenel',{username:this.username_save,chanelname:chanelname}).subscribe((data:any)=>{
+    this.httpClient.post(BACKEND_URL+'/deleteChanel',{username:this.username_save,chanelname:chanelname}).subscribe((data:any)=>{
       //console.log(data.ok);
       if(data.ok==true){
         alert("user deleted");
@@ -158,35 +158,34 @@ public clickedchanelModalClose(){
   public clickedchanelModal(groupname:any,username:any){
     this.chanelmodal=true;
     this.username_save=username;
+    console.log(username[1]);
+    console.log(username[0])
 
-    this.httpClient.post(BACKEND_URL+'/searchChenel',{username:username,groupname:groupname}).subscribe((data:any)=>{
+    this.httpClient.post(BACKEND_URL+'/searchChenal',{username:username[1],groupname:username[0]}).subscribe((data:any)=>{
       //console.log(data.chanelList);
       this.chenel_name=data.chanelList;
+      console.log(this.chenel_name);
 
     });
 
   }
   
   public addUserChanel(){
-    //console.log(this.userlist);
     var userlist=this.userlist;
     var groupname1:any;
 
-   // var chanel_list=this.chanel_list;
    this.httpClient.post(BACKEND_URL+'/groupadminget',{username:this.username})
    .subscribe((data:any)=>{
      console.log(data.ok);
 
-     //console.log(data.groupname);
-     groupname1=data.groupname;
-     //console.log(groupname1);
-     this.httpClient.post(BACKEND_URL+'/getChanel',{groupname:groupname1}).subscribe((data:any)=>{
-      //console.log(data);
-      //console.log(data.ok);
-      //console.log(data.result);
+    
+     groupname1=data.group_list;
+    console.log(groupname1,"groupname1");
+
+     this.httpClient.post(BACKEND_URL+'/getChanelList',{groupname:groupname1}).subscribe((data:any)=>{
+   
       this.chanel_list=data.result;
-      //console.log("result"+data.result);
-      //console.log("test1"+this.chanel_list);
+  
 
     });
    });
@@ -209,8 +208,11 @@ public clickedchanelModalClose(){
   public AddUserInChanel(){
     //console.log(this.selectedUserName);
     //console.log(this.selectedChanelName);
+ 
     if (this.selectedChanelName!=null && this.selectedUserName!=null ){
-     // console.log("both filled");
+     // console.log("both filled");\
+     this.selectedUserName=this.selectedUserName.split(",").slice(1).join(",");
+
      this.httpClient.post(BACKEND_URL+'/addUserInChanel',{username:this.selectedUserName,chanelname:this.selectedChanelName})
      .subscribe((data:any)=>{
       console.log(data);
@@ -226,10 +228,10 @@ public clickedchanelModalClose(){
      });
     }}
 
-    public MakeAdmin(username:any){
+    public MakeAdmin(username:any,groupname:any){
       var makeadminusername=username;
       //console.log(this.groupname);
-      this.httpClient.post(BACKEND_URL+'/makeUserAdmin',{username:makeadminusername,groupname:this.group_list}).subscribe((data:any)=>{
+      this.httpClient.post(BACKEND_URL+'/makeUserAdmin',{username:makeadminusername,groupname:groupname}).subscribe((data:any)=>{
         if(data.ok){
           alert(username+" is admin now");
           window.location.reload();
@@ -247,13 +249,13 @@ public clickedchanelModalClose(){
       
     }
    
-    public deleteAdmin(username:any){
+    public deleteAdmin(username:any,groupname:any){
     
       //console.log(this.username_save);//work;
       console.log(username);
       console.log(this.group_list);
       
-      this.httpClient.post(BACKEND_URL+'/deleteGroupAdmin',{username:username,groupname:this.group_list}).subscribe((data:any)=>{
+      this.httpClient.post(BACKEND_URL+'/deleteGroupAdmin',{username:username,groupname:groupname}).subscribe((data:any)=>{
         console.log(data.ok);
         if(data.ok==true){
           alert("Admin deleted");
@@ -269,7 +271,7 @@ public clickedchanelModalClose(){
       isadmin=false;
       //console.log(this.manager_list.length); //1
       //console.log(this.manager_list[0][1].length);//2
-      console.log(username[1])
+      //console.log(username[1])
       for (let i = 0; i < this.manager_list.length; i++) {
         for (let j=0; j<this.manager_list[i][1].length; j++){
         if (this.manager_list[i][1][j]==username[1]){
@@ -282,7 +284,7 @@ public clickedchanelModalClose(){
     public checkUser(username:any):any{
       var isUser:any;
       isUser=true;
-      console.log(username[1])
+      //console.log(username[1])
 
       //console.log(this.manager_list);
       for (let i = 0; i < this.manager_list.length; i++) {

@@ -51,20 +51,19 @@ MongoClient.connect(url, {
         // require('./routes/account.js')(db,app); //same as add user
         require('./routes/addUser.js')(db,app); //+edit
         require('./routes/addUserInChanel.js')(db,app);
-        // require('./routes/addgroupmember.js')(db,app);
-        // require('./routes/checkGroupAdmin.js')(db,app);
-        // require('./routes/database.js')(db,app);
-        // require('./routes/deleteChanel.js')(db,app);
-        // require('./routes/deleteGroupAdmin.js')(db,app);
+        require('./routes/addgroupmember.js')(db,app);
+        // require('./routes/checkGroupAdmin.js')(db,app); // useless
+        require('./routes/deleteChanel')(db,app);
+        require('./routes/deleteGroupAdmin.js')(db,app);
         require('./routes/deleteUser.js')(db,app);
-        // require('./routes/deletegroupmember.js')(db,app);
-        // require('./routes/getChanelList.js')(db,app);
+        require('./routes/deletegroupmember.js')(db,app);
+        require('./routes/getChanelList.js')(db,app);
         require('./routes/getGroupMember.js')(db,app);
-        // require('./routes/get_chatroom_list.js')(db,app);
+        require('./routes/get_chatroom_list.js')(db,app);
         require('./routes/groupadminget.js')(db,app);
-        // require('./routes/makeUserAdmin.js')(db,app);
+        require('./routes/makeUserAdmin.js')(db,app);
         require('./routes/manageUser.js')(db,app);
-        // require('./routes/searchChenal.js')(db,app);
+        require('./routes/searchChenal.js')(db,app);
 
 
         //require('./routes/api-add.js')(db,app);

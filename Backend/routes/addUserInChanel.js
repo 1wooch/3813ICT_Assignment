@@ -6,8 +6,18 @@ module.exports=function(client,app){
         console.log(req.body);
 
         const collection = client.collection('chanels');
-        const test=collection.map(x=>x.user_list);
-        console.log(test);
+        collection.update({chanelname:req.body.chanelname},
+            {$push:{user_list:req.body.username}},function(err){
+                if(err){
+                    console.log("add user in chanel error");
+                    res.send({ok:false});
+
+                }else{
+                    res.send({ok:true});
+                    console.log("add user in chanel succeed");
+                    
+                }
+            })
 
     })
 }

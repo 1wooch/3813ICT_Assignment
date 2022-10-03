@@ -9,24 +9,24 @@ module.exports=function(client,app){
             if(err){
                 res.send({ok:false});
             }
-            //console.log(result);
+            console.log(result);
+            console.log(result.length);
+
             for(let i=0; i<result.length; i++){
-                //console.log(i,"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                //console.log(result[i]);
+
                 for (let j =0; j<result[i].group_manager_list.length; j++){
                     if(result[i].group_manager_list[j]==req.body.username){
                         group_list.push(result[i].groupname);
-                        console.log(result[i].groupname);
                         
                     }
                 }
             }
-            console.log(req.body.username);
-            console.log(group_list);
+           
 
             if(group_list.length>0){
-                res.send({"ok":true,"group_list":group_list});
-
+                res.send({ok:true,group_list:group_list});
+                console.log(group_list)
+;
             }
             else{
                 res.send({"ok":false})
