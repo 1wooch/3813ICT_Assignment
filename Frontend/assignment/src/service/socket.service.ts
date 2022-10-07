@@ -38,7 +38,7 @@ export class SocketService {
   getImage(){
     return new Observable(observable=>{
       this.socket.on('image',(data:any)=>{observable.next(data)
-      console.log(data);
+      //console.log(data);
 
       });
     });
