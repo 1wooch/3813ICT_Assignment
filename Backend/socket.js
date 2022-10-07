@@ -15,12 +15,12 @@ module.exports={
             })
             socket.on('join',(chanelname)=>{
                 socket.join(chanelname);
-                // ,function(){
-                console.log("join",chanelname);
+                //console.log("join",chanelname);
+            })
+            socket.on('image',(chanelname,file)=>{
+                io.to(chanelname).emit('image',file);
+                console.log('image is working');
 
-                // });
-
-                //console.log(chanelname) //working
             })
         });
     }

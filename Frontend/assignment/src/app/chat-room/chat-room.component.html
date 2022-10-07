@@ -1,6 +1,10 @@
 <div class="container">
     <form>
         <div class="form-group">
+            <label for="messagecontent">New Image</label>
+            <br/>
+            <input #fileInput type="file" accept="image/*" (change)="imageSelected(fileInput.files)" multiple>
+            <br/>
             <label for="messagecontent">New Message</label>
             <input type="text" [(ngModel)]="messagecontent" name ="messagecontent" id="messagecontent" class="form-control"/>
 
@@ -14,3 +18,7 @@
 <div *ngFor="let m of messages; let i=index">
     <li>User Name: {{users[i]}} : {{messages[i]}}</li>
 </div>
+<label for="messagecontent">Received Image</label>
+<ul *ngFor="let item of images;">
+    <li ><img src="{{item}}"></li>
+</ul>

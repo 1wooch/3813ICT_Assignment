@@ -30,6 +30,8 @@ export class ChatRoomComponent implements OnInit {
   sender_message:any;
   chat_list:any[]=[];
 
+  images:any[]=[];
+
  
 
 
@@ -55,6 +57,11 @@ export class ChatRoomComponent implements OnInit {
       this.users.push(username);
       this.sender_username=username;
     });
+    this.ioConnection=this.socketService.getImage().subscribe((image:any)=>{
+      this.images.push(image);
+      //console.log(this.images);
+
+    })
   
    
   }
@@ -72,6 +79,20 @@ export class ChatRoomComponent implements OnInit {
   joinroom(){
     this.socketService.join(this.chanelname);
 
+  }
+  imageSelected(files:any){
+    if(files.length>0){
+      alert("image selected: "+files[0].name);
+    }
+    let fileReader=new FileReader();
+    fileReader.readAsDataURL(files[0]);
+    fileReader.onload=e=>{
+      let buf = fileReader.result;
+      //console.log(buf);
+
+      this.socketService.sendImage(this.chanelname,buf);//buf,this.username,this.chanelname);
+
+    };
   }
 }
 ////socket.room() with a string (name of the room) I think

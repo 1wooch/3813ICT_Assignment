@@ -27,11 +27,22 @@ export class SocketService {
   getUsername(){
     return new Observable(observable=>{
       this.socket.on('username',(username:any)=>{observable.next(username)
-        console.log('username: ',username);});
-     
-
+        //console.log('username: ',username);
+      });
   });
   
+  }
+  sendImage(chanelname:any,file:any){
+      this.socket.emit('image',chanelname,file);
+  }
+  getImage(){
+    return new Observable(observable=>{
+      this.socket.on('image',(data:any)=>{observable.next(data)
+      console.log(data);
+
+      });
+    });
+    
   }
 
   join(chanelname:any){
