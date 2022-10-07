@@ -15,9 +15,9 @@ export class SocketService {
     this.socket=io(SERVER_URL);
     return()=>{this.socket.disconnect();}
   }
-  send(message:string,username:string){
-    this.socket.emit('message',message); //should I combine this 2?
-    this.socket.emit('username',username); //eventname ('eventname',input)
+  send(message:string,username:string,chanelname:string){
+    this.socket.emit('message',message,chanelname); //should I combine this 2?
+    this.socket.emit('username',username,chanelname); //eventname ('eventname',input)
   }
   getMessage(){
     return new Observable(observable=>{
@@ -31,5 +31,10 @@ export class SocketService {
      
 
   });
+  
+  }
 
-  }}
+  join(chanelname:any){
+    this.socket.emit('join',chanelname);
+  }
+}

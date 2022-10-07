@@ -34,16 +34,19 @@ export class ChatRoomComponent implements OnInit {
 
 
   ngOnInit(): void {this.check_get(),this.initIoConnection()}
+
   private check_get(){
     this.chanelname=this.route.snapshot.paramMap.get('chanelname');
     this.username=this.route.snapshot.paramMap.get('username');
-    console.log(this.chanelname);
-    console.log(this.username); 
+
+    
+
     //get user name and chanel naem for socket connection and message
   }
   private initIoConnection(){
 
     this.socketService.initSocket();
+    this.socketService.join(this.chanelname);
     this.ioConnection=this.socketService. getMessage().subscribe((message:any)=>{
       this.messages.push(message);
       this.sender_message=message;
@@ -53,21 +56,21 @@ export class ChatRoomComponent implements OnInit {
       this.sender_username=username;
     });
   
-    console.log(this.users);
-    console.log(this.messages);
-    
-
-  
+   
   }
   public chat(){
     if(this.messagecontent){
-      this.socketService.send(this.messagecontent,this.username);
+      this.socketService.send(this.messagecontent,this.username,this.chanelname);
       this.messagecontent='';
 
     }else{
       console.log("no message");
 
     }
+
+  }
+  joinroom(){
+    this.socketService.join(this.chanelname);
 
   }
 }
