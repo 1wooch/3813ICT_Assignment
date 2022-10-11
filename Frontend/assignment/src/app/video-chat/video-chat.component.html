@@ -1,0 +1,51 @@
+<!-- <div class="video-grid container">
+    <div class="row">
+        <div class="col-6">
+            <button (click)="makeCall();" class="btn btn-primary">Call</button>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-6" *ngFor="let video of videos">
+            <video [srcObject]="video.srcObject" (loadedmetadata)="onLoadedMetadata($event)" [muted]="video.muted">
+            </video><br/>
+            <span *ngIf="video.userId !==ownID; else currentUserVideoLabel "> User ID - {{video.userId}
+            </span>
+            <ng-template #currentUserVideoLabel>
+                <span>You</span>
+            </ng-template>
+
+        </div>
+    </div>
+
+</div> -->
+<!-- 
+<div class="container-fluid">
+    <div class="row p-2">
+        <button mat-raised-button color="primary" class="m-2" [disabled]="isCallStarted" (click)="streamCamera()">Stream With Camera</button>
+        <button mat-raised-button color="m-2" class="m-2" [disabled]="isCallStarted" (click)="streamScreen()">Stream With Screen</button>
+        <button mat-raised-button color="warn" class="m-2" [disabled]="!(isCallStarted)" (click)="endCall()">End Call</button>
+    </div>
+    <div class="video-grid">
+        <div *ngFor="let video of videos">
+            <span *ngIf="video.userId !==ownID; else currentUserVideoLabel">{{video.userId}</span>
+            <ng-template #currentUserVideoLabel>
+                <span>You</span>
+            </ng-template>
+            <video [srcObject]="video.srcObject" (loadedmetadata)="onLoadedMetadata($event)" [muted]="video.muted">
+            </video><br/>
+        </div>
+    </div>
+</div> -->
+
+
+<div class="video-grid">
+    <div *ngFor="let video of videos">
+        <span *ngIf="video.userId !==ownID; else currentUserVideoLabel">{{video.userId}</span>
+        <ng-template #currentUserVideoLabel>
+            <span>You</span>
+        </ng-template>
+        <video [srcObject]="video.srcObject" (loadedmetadata)="onLoadedMetadata($event)" [muted]="video.muted">
+</video>
+    </div>
+</div>

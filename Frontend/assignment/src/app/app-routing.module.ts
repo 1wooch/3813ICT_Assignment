@@ -8,7 +8,7 @@ import { GroupAdminComponent } from './group-admin/group-admin.component';
 import { MainpageComponent } from './mainpage/mainpage.component';
 import { ChatroomListComponent } from './chatroom-list/chatroom-list.component';
 import { ChatRoomComponent } from './chat-room/chat-room.component';
-
+import { VideoChatComponent } from './video-chat/video-chat.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
@@ -19,7 +19,7 @@ const routes: Routes = [
   {path:'mainpage',component:MainpageComponent},
   {path:'chatroom-list',component:ChatroomListComponent},
   {path:'chatroom',component:ChatRoomComponent},
-
+  {path:'videochat',component:VideoChatComponent}
 ];
 
 @NgModule({

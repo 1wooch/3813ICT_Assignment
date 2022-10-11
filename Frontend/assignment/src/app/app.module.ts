@@ -20,6 +20,10 @@ import { ChatRoomComponent } from './chat-room/chat-room.component';
 //Service-----------------------------------------------------------
 import { SocketService } from 'src/service/socket.service';
 import { Socket } from 'socket.io';
+import { VideoChatComponent } from './video-chat/video-chat.component';
+import { PeerService } from 'src/service/peer.service';
+
+
 const routes:Routes=[
   {path:'login',component:LoginComponent},
   {path:'account',component:AccountComponent},
@@ -42,6 +46,7 @@ const routes:Routes=[
     MainpageComponent,
     ChatroomListComponent,
     ChatRoomComponent,
+    VideoChatComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +59,7 @@ const routes:Routes=[
     ReactiveFormsModule,
     NgbModule
   ],
-  providers: [HttpClientModule,SocketService],
+  providers: [HttpClientModule,SocketService,PeerService],
   bootstrap: [AppComponent],
   exports:[RouterModule]
 })
