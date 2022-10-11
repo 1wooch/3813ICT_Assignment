@@ -18,6 +18,9 @@ There is 4 different pages.
 + Login 
 + Manage User page
 + app.component.html (Navbar)
++ chat-room (2nd)
++ chatroom-list (2nd)
++ video-chat(2nd)
 ![image](https://user-images.githubusercontent.com/51581298/188771669-f4eed2f9-edd5-40e6-989f-d6843c86f5e8.png)
 
 # Frontend
@@ -155,6 +158,81 @@ If file receive false then alert "user already exist in +selected chanel name".
 Once the user click log out button the localstorage will be cleared and return to login page.
 
 <br/>
+<br/>
+--------------------------------------------------<br/>
+
+
+5. Chat-Room-List Page<br/>
+
+
+![image](https://user-images.githubusercontent.com/51581298/195139067-65a420e0-2aa3-4aa8-8e85-9d6401d565b8.png)
+
+This page list all of the chanel the user belongs.
+This page use this information:
++ UserName
++ Group Name
++ Chanel Name
+
+As we can see on the Page
+page list the chanel naem with Join button.
+join button will directly connect to that chanel by using post with chanel name. 
+Chanel name will be searched by using group name and user name.
+FIrst server will get the group name and username from front end.
+After that, use group name, search the chanel on that group.
+search if that chanel contain the user name on chanel userList.
+</br>
+</br>
+</br>
+--------------------------------------------------<br/>
+
+6. chat-room
+![image](https://user-images.githubusercontent.com/51581298/195141499-01f60dd5-83c0-43e6-a08c-caeb63fc5d9d.png)
+
++ Username 
++ ChanelName
++ Socket
+
+By using Socket Room function when the user join the chat room. Using 'GET' get chanel name when user enter to chat room. After that connect to chat room with socket room. 
+
+On the Top of the Page it shows name of the user.
+![image](https://user-images.githubusercontent.com/51581298/195145172-c3359e11-46ea-4a87-9405-5377fc47abd7.png)
+In this case 'WWC' is displayed.
+</br>
+
+Under the user name the chat will be displayed.
+![image](https://user-images.githubusercontent.com/51581298/195145041-98efe68c-ff7e-4420-bee6-2d2d610299bc.png)
+
+
++ Upload Image
+![image](https://user-images.githubusercontent.com/51581298/195145528-303fd85b-9926-4e0a-874b-e8ff8e248f03.png)
+
+By clicking '+' button user can post the image to socket. 
+If User click it, file explore will be displayed. and user only can select the image. 
+![image](https://user-images.githubusercontent.com/51581298/195145528-303fd85b-9926-4e0a-874b-e8ff8e248f03.png)
+File Exploreer: 
+![image](https://user-images.githubusercontent.com/51581298/195145899-af977445-fe59-44d0-9dfa-51300d907b35.png)
+
+If user select the image file the name of the image will be alert on the page.
+![image](https://user-images.githubusercontent.com/51581298/195146242-e05fa212-48f9-4aac-a5c3-10149c57c316.png)
+After User click ok button the image displayed on the page.
+</br>
+</br>
+</br>
+--------------------------------------------------<br/>
+
+7. Voice Chat Page
+
+(No IMAGE)
+
+
+</br>
+
+
+
+
+
+
+
 
 -----------------------------------------------------<br/>
 
@@ -174,19 +252,21 @@ after that go to each js file and execute the file with post value using req.bod
 
 Now This document go through each js file and how that works
 e.g.:
-    app.post('/login',require('./routes/login'));
-    app.post('/loginafter',require('./routes/account'));
-    app.post('/manageUser',require('./routes/manageUser'));
-    app.post('/addUser',require('./routes/addUser'));
-    app.post('/deleteUser',require('./routes/deleteUser'));
-    app.post('/groupadminget',require('./routes/group-admin-get'));
-    app.post('/getGroupMember',require('./routes/getGroupMember'));
-    app.post('/deleteGroupMember',require('./routes/deletegroupmember'));
-    app.post('/addGroupMember',require('./routes/addgroupmember'));
-    app.post('/searchChenel',require('./routes/searchChenal'));
-    app.post('/deleteCenel',require('./routes/deleteChanel'));
-    app.post('/getChanel',require('./routes/getChanelList'));
-    app.post('/addUserInChanel',require('./routes/addUserInChanel'));
+    require('./routes/login.js')(db,app);
+    require('./routes/addUser.js')(db,app); //+edit
+    require('./routes/addUserInChanel.js')(db,app);
+    require('./routes/addgroupmember.js')(db,app);
+    require('./routes/deleteChanel')(db,app);
+    require('./routes/deleteGroupAdmin.js')(db,app);
+    require('./routes/deleteUser.js')(db,app);
+    require('./routes/deletegroupmember.js')(db,app);
+    require('./routes/getChanelList.js')(db,app);
+    require('./routes/getGroupMember.js')(db,app);
+    require('./routes/get_chatroom_list.js')(db,app);
+    require('./routes/groupadminget.js')(db,app);
+    require('./routes/makeUserAdmin.js')(db,app);
+    require('./routes/manageUser.js')(db,app);
+    require('./routes/searchChenal.js')(db,app);
 
 1. Login 
 <br/>
@@ -521,14 +601,31 @@ e.g.:
     5. return true to frontend.
  -----------------------------------------------------
 <br/>
+17.  get_chatroom_list.js
+<br/>
+------------------------------------------------------<br/>
 
++ Input Value (GET): username<br/>
 
-# Json file
+-------------------------------------------------------<br/>
 
++ Output (POST): chanelList<br/>
 
-1. users.json
+-------------------------------------------------------<br/>
+
++ explanation of function: 
+    1. get username from frontend.
+    2. using username put all of the chanel name that contain user name in user-list.
+    3. After that, send the chanel list to front end 
+ -----------------------------------------------------
 <br/>
 
+# MongoDB Atlas file
+![image](https://user-images.githubusercontent.com/51581298/195150248-5fe474d1-33c2-4c4a-8cc7-bca59ec5983a.png)
+
+1. users collection
+<br/>
+![image](https://user-images.githubusercontent.com/51581298/195150327-b3b4fc88-8b51-4149-99a1-7d4b66387aa2.png)
     "users":[
         {
             "username":"username",
@@ -541,7 +638,7 @@ e.g.:
     ]
 -----------------------------------------------------<br/>
 
-Description: users.json contain data about user.
+Description: users collection contain data about user.
 username is string and store name of user
 pwd is password and format is string.
 email is string.
@@ -551,7 +648,8 @@ role is string represent role of the user.
 -----------------------------------------------------<br/>
 
 
-2. group.json
+2. group collection
+![image](https://user-images.githubusercontent.com/51581298/195150561-aa3a5f4e-ee58-4376-bf66-89cda2d4bf07.png)
 <br/>
 
     "group":[
@@ -567,7 +665,7 @@ role is string represent role of the user.
 -----------------------------------------------------<br/>
 
 Description:
-group.json contain the data of group information.
+group collection contain the data of group information.
 groupname is string that represent groupname.
 user_list is list of user format is array and contain string only in array.
 group_manager_list is list of manager of group format is array and contain string only in array.
@@ -577,9 +675,9 @@ admin is array that reepresent admin that nominate by admin as list and contain 
 -----------------------------------------------------<br/>
 
 
-3. Chanels.json
+3. Chanels collection
 <br/>
-
+![image](https://user-images.githubusercontent.com/51581298/195150710-6287155d-283e-4425-ac60-ed4c271f5be3.png)
     "chanel":[
         {
         "chanelname": "chanelname",
@@ -650,8 +748,17 @@ getUser() | router/manageUser
 addUser() | router/addUser
 removeUser(username:string) | router/deleteUser
 
+5. get_chatroom_list.js
+VIEW: chatroom-list.html
 
 
+CONTROLLER  | MODEL
+------------- | -------------
+getChanel() | router/get_chatroom_list.js
+joinChanel | socket.js
+
+
+-----------------------------------------------------
     
 
     

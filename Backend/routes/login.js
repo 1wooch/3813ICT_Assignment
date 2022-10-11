@@ -24,7 +24,8 @@ module.exports=function(client,app){
                 email:result.email,
                 age:result.age,
                 birthdate:result.birthdate,
-                role:result.role
+                role:result.role,
+                img:result.image
             });
         }else{
             console.log("log in failed");

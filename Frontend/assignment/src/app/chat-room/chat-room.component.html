@@ -1,24 +1,72 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+
 <div class="container">
-    <form>
-        <div class="form-group">
-            <label for="messagecontent">New Image</label>
-            <br/>
-            <input #fileInput type="file" accept="image/*" (change)="imageSelected(fileInput.files)" multiple>
-            <br/>
-            <label for="messagecontent">New Message</label>
-            <input type="text" [(ngModel)]="messagecontent" name ="messagecontent" id="messagecontent" class="form-control"/>
+    <div class="row clearfix">
+        <div >
+            <div class="card chat-app">
 
+    <div class="chat">
+        <div class="chat-header clearfix">
+            <div class="row">
+                <div class="col-lg-6">
+                    
+                    <div class="chat-about">
+                        <h3 class="m-b-0">Current User: {{this.username}}</h3>
+                        <img src="{{this.userProfile}}"
+                        >
+                    </div>
+                </div>
+                
+            </div>
         </div>
-        <div class="form-group">
+        <div *ngFor="let m of messages; let i=index" class="chat-history">
+            <ul >
+                <li class="clearfix">
+                    <div class="message-data">
+                        <span class="message-data-time">{{users[i]}} </span><img src="{{this.profileImages[i]}}">
+                    </div>
+                    <div class="message my-message">{{messages[i]}}</div>                                    
+            </ul>
+        </div>
+    </div>
+    
+    <div class="chat-message clearfix">
+        <div class="input-group mb-0">
+            <div class="input-group-prepend">
+
+                <div class="image-upload">
+                    <label for="file-input">
+                      <i class="fa fa-plus-square" id="icon1" aria-hidden="true" ></i>
+                    </label>
+                  
+                    <input #fileInput id="file-input" type="file"accept="image/*" (change)="imageSelected(fileInput.files)" multiple />
+                </div>
+            </div>
+            <input type="text" [(ngModel)]="messagecontent" name ="messagecontent" id="messagecontent" class="form-control" placeholder="Enter the Text here"/>
             <button (click)="chat()" class="btn btn-primary">Send</button>
-        </div>
-    </form>
-</div>
 
-<div *ngFor="let m of messages; let i=index">
-    <li>User Name: {{users[i]}} : {{messages[i]}}</li>
-</div>
-<label for="messagecontent">Received Image</label>
-<ul *ngFor="let item of images;">
-    <li ><img src="{{item}}"></li>
-</ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row clearfix">
+            <div >
+                <div class="card chat-app">
+    
+        <div class="chat">
+            
+            <div class="chat-history">
+                <ul *ngFor="let item of images; let j=index" >
+                    <li class="clearfix">
+                        <div class="message-data">
+                            <span class="message-data-time">{{j+1}}'st Image</span>
+                        </div>
+                        <div class="message my-message"><img src="{{item}}"></div>                                    
+                    </li>                                 
+                </ul>
+            </div>
+        </div>
+        
+
+

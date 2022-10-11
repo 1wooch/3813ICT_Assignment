@@ -59,7 +59,7 @@ const routes:Routes=[
     ReactiveFormsModule,
     NgbModule
   ],
-  providers: [HttpClientModule,SocketService,PeerService],
+  providers: [HttpClientModule,SocketService],
   bootstrap: [AppComponent],
   exports:[RouterModule]
 })

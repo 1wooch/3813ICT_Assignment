@@ -15,9 +15,11 @@ export class SocketService {
     this.socket=io(SERVER_URL);
     return()=>{this.socket.disconnect();}
   }
-  send(message:string,username:string,chanelname:string){
+  send(message:string,username:string,chanelname:string,userProfile:string){
     this.socket.emit('message',message,chanelname); //should I combine this 2?
     this.socket.emit('username',username,chanelname); //eventname ('eventname',input)
+    this.socket.emit('userprofile',userProfile,chanelname);
+
   }
   getMessage(){
     return new Observable(observable=>{
@@ -31,6 +33,14 @@ export class SocketService {
       });
   });
   
+  }
+  getUserProfile(){
+    return new Observable(observable=>{
+      this.socket.on('userprofile',(userprofile:any)=>{observable.next(userprofile)
+      console.log('userProfile',userprofile);
+
+      })
+    })
   }
   sendImage(chanelname:any,file:any){
       this.socket.emit('image',chanelname,file);

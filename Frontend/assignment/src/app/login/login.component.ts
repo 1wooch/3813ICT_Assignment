@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('role', data.role);
           localStorage.setItem('birthdate', data.birthdate);
           localStorage.setItem('pwd', data.pwd);
+          localStorage.setItem('image',data.img);
           //window.location.reload();
 
           this.router.navigateByUrl('account');

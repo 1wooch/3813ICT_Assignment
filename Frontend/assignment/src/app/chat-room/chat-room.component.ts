@@ -31,6 +31,9 @@ export class ChatRoomComponent implements OnInit {
   chat_list:any[]=[];
 
   images:any[]=[];
+  userProfile:any=localStorage.getItem('image');
+  profileImages:any[]=[];
+
 
  
 
@@ -50,6 +53,7 @@ export class ChatRoomComponent implements OnInit {
     this.socketService.initSocket();
     this.socketService.join(this.chanelname);
     this.ioConnection=this.socketService. getMessage().subscribe((message:any)=>{
+      //console.log(message)
       this.messages.push(message);
       this.sender_message=message;
     });
@@ -60,6 +64,9 @@ export class ChatRoomComponent implements OnInit {
     this.ioConnection=this.socketService.getImage().subscribe((image:any)=>{
       this.images.push(image);
       //console.log(this.images);
+    });
+    this.ioConnection=this.socketService.getUserProfile().subscribe((profileImage:any)=>{
+      this.profileImages.push(profileImage);
 
     })
   
@@ -67,7 +74,9 @@ export class ChatRoomComponent implements OnInit {
   }
   public chat(){
     if(this.messagecontent){
-      this.socketService.send(this.messagecontent,this.username,this.chanelname);
+      //console.log(this.userProfile);
+
+      this.socketService.send(this.messagecontent,this.username,this.chanelname,this.userProfile);
       this.messagecontent='';
 
     }else{
@@ -91,6 +100,7 @@ export class ChatRoomComponent implements OnInit {
       //console.log(buf);
 
       this.socketService.sendImage(this.chanelname,buf);//buf,this.username,this.chanelname);
+      console.log(this.userProfile);
 
     };
   }

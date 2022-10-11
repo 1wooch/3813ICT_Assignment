@@ -11,7 +11,15 @@ module.exports={
             })
             socket.on('username',(username,chanelname)=>{
                 io.to(chanelname).emit('username',username);
+                
                 //console.log(chanelname) //working
+            })
+            socket.on('userprofile',(userprofile,chanelname)=>{
+                io.to(chanelname).emit('userprofile',userprofile);
+                
+                console.log('working?')
+                console.log(userprofile);
+                console.log('working? finish')
             })
             socket.on('join',(chanelname)=>{
                 socket.join(chanelname);

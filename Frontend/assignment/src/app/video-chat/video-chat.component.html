@@ -45,7 +45,7 @@
         <ng-template #currentUserVideoLabel>
             <span>You</span>
         </ng-template>
-        <video [srcObject]="video.srcObject" (loadedmetadata)="onLoadedMetadata($event)" [muted]="video.muted">
+        <video [srcObject]="video.srcObject"  [muted]="video.muted">
 </video>
     </div>
 </div>
