@@ -619,6 +619,27 @@ e.g.:
     3. After that, send the chanel list to front end 
  -----------------------------------------------------
 <br/>
+18. Socket.js
+
+![image](https://user-images.githubusercontent.com/51581298/195253919-ebea0f5f-8876-4826-b9b3-9fdf305f8e25.png)
+
+18-1.Socket.js -> connection (message)
+ Connection is using for connect user to specific room by using chanel name and user name.
+ FIrst, using chanel name and make user join the chanel socket.
+ After that, everytime user send message the socket will send that message to that chanel socket.
+18-2 Socket.js -> username:
+For the chat, chat needs to display who sent that chat. To do that when the user send chat, user send chat message and user name. After that socket will send that information on socket. 
+In front end section, using observation whenever the username or chat work. It will store that information in frontend and displayed.
+
+18-3 Socket.js -> userprofile,username:
+This section, work same as username and user chat. It get the userprofile image as string Image, and use observation so whenever the user send chat, it will store it as list and present it with message and user naem.
+
+18-4 Socket.js -> join:
+This section will help user to join the specfic socket room for chanel.
+
+18-5 Socket.js -> image:
+THis will send image on chanel so the user can get the image send by other user.
+
 
 # MongoDB Atlas file
 ![image](https://user-images.githubusercontent.com/51581298/195150248-5fe474d1-33c2-4c4a-8cc7-bca59ec5983a.png)
@@ -678,6 +699,12 @@ admin is array that reepresent admin that nominate by admin as list and contain 
 3. Chanels collection
 <br/>
 ![image](https://user-images.githubusercontent.com/51581298/195150710-6287155d-283e-4425-ac60-ed4c271f5be3.png)
+
+<br/>
+
+<br/>
+
+
     "chanel":[
         {
         "chanelname": "chanelname",
