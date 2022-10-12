@@ -29,15 +29,15 @@ export class ChatroomListComponent implements OnInit {
 
   constructor(private modalService: NgbModal,private httpClient:HttpClient,private router:Router){}
 
-  ngOnInit(): void {this.getChanel()}
+  ngOnInit(): void {this.getChanel()} // get a chanel of user involved when the page loaded.
   public getChanel(){
-    this.httpClient.post(BACKEND_URL+'/get_chatroom_list',{username:this.username})
+    this.httpClient.post(BACKEND_URL+'/get_chatroom_list',{username:this.username}) // sedn user name so the user is in chanel or not. 
     .subscribe((data:any)=>{
         this.result=data.chanelList;
 
     })
   }
-  public joinChanel(chanelname:any){
+  public joinChanel(chanelname:any){ // for the button join if the user click it then get a chanel name and user name and post it to chat-room
     this.router.navigate(['/chatroom',{chanelname:chanelname,username:this.username}]);
   }
 }

@@ -81,8 +81,9 @@ export class GroupAdminComponent implements OnInit {
       this.group_list=data.group_list;
       //console.log(this.groupname+"????");
       if (data.ok==true){
-        console.log("found your group!");
-        this.httpClient.post(BACKEND_URL+'/getGroupMember',{group_list:this.group_list}).subscribe(
+        console.log("found your group!"); // if any group found that user involved
+        this.httpClient.post(BACKEND_URL+'/getGroupMember',{group_list:this.group_list}).subscribe( //if admin then get all of the user.
+
           (data:any)=>{
             // console.log("Received group member"+data.ok);
             // //console.log(data.userlist); //list of user 
@@ -114,7 +115,7 @@ public clickedchanelModalClose(){
   }
 
 
-  public removeUser(deleteusername:any,deletegrouname:any){
+  public removeUser(deleteusername:any,deletegrouname:any){ //remove user using username and groupname
     console.log("username delte"+deleteusername);
     this.httpClient.post(BACKEND_URL+'/deletegroupmember',{username:deleteusername,groupname:deletegrouname})
     .subscribe((data:any)=>{
@@ -126,7 +127,7 @@ public clickedchanelModalClose(){
     });
   }
 
-  public addUser(){
+  public addUser(){ // add user by using groupname and username
     console.log(this.group_list);
     const{e_email,e_role,e_age,e_birthdate,e_username,e_pwd}=this.form;
     this.httpClient.post(BACKEND_URL+'/addgroupmember',{username:e_username,groupname:this.group_list})
@@ -142,7 +143,7 @@ public clickedchanelModalClose(){
       }
     });
   }
-  public deleteChanel(chanelname:any){
+  public deleteChanel(chanelname:any){ // delete user from chanel by using username and chanel name.
     
     //console.log(this.username_save);//work;
     console.log(chanelname);
@@ -157,7 +158,7 @@ public clickedchanelModalClose(){
     })
 
   }
-  public clickedchanelModal(groupname:any,username:any){
+  public clickedchanelModal(groupname:any,username:any){ //this is for the chanel modal popup
     this.chanelmodal=true;
     this.username_save=username;
     console.log(username[1]);
@@ -172,7 +173,7 @@ public clickedchanelModalClose(){
 
   }
   
-  public addUserChanel(){
+  public addUserChanel(){ // for the add User modal
     var userlist=this.userlist;
     var groupname1:any;
 
@@ -200,14 +201,14 @@ public clickedchanelModalClose(){
      
   //   });
   // }
-  open(content:any) {
+  open(content:any) { // for opening modal 
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
      
     });
   }
-  public AddUserInChanel(){
+  public AddUserInChanel(){ // for the modal that add user in chanel
     //console.log(this.selectedUserName);
     //console.log(this.selectedChanelName);
  
@@ -215,7 +216,7 @@ public clickedchanelModalClose(){
      // console.log("both filled");\
      this.selectedUserName=this.selectedUserName.split(",").slice(1).join(",");
 
-     this.httpClient.post(BACKEND_URL+'/addUserInChanel',{username:this.selectedUserName,chanelname:this.selectedChanelName})
+     this.httpClient.post(BACKEND_URL+'/addUserInChanel',{username:this.selectedUserName,chanelname:this.selectedChanelName}) // send data to /addUserInChanel
      .subscribe((data:any)=>{
       console.log(data);
       if (data.ok==true){
@@ -230,7 +231,7 @@ public clickedchanelModalClose(){
      });
     }}
 
-    public MakeAdmin(username:any,groupname:any){
+    public MakeAdmin(username:any,groupname:any){ // make admin button make user by admin
       var makeadminusername=username;
       //console.log(this.groupname);
       this.httpClient.post(BACKEND_URL+'/makeUserAdmin',{username:makeadminusername,groupname:groupname}).subscribe((data:any)=>{
@@ -251,13 +252,13 @@ public clickedchanelModalClose(){
       
     }
    
-    public deleteAdmin(username:any,groupname:any){
+    public deleteAdmin(username:any,groupname:any){ // delete user by usin g
     
       //console.log(this.username_save);//work;
       console.log(username);
       console.log(this.group_list);
       
-      this.httpClient.post(BACKEND_URL+'/deleteGroupAdmin',{username:username,groupname:groupname}).subscribe((data:any)=>{
+      this.httpClient.post(BACKEND_URL+'/deleteGroupAdmin',{username:username,groupname:groupname}).subscribe((data:any)=>{ // delete user admin by using username and groupname
         console.log(data.ok);
         if(data.ok==true){
           alert("Admin deleted");
@@ -268,7 +269,7 @@ public clickedchanelModalClose(){
       })
   
     }
-    public checkAdmin(username:any):any{
+    public checkAdmin(username:any):any{ // for the button that display different thing if the user is not adming then make admin button popup and if it is then delete admin pop up
       var isadmin:any;
       isadmin=false;
       //console.log(this.manager_list.length); //1
@@ -283,7 +284,7 @@ public clickedchanelModalClose(){
       return isadmin;
 
     }
-    public checkUser(username:any):any{
+    public checkUser(username:any):any{ //check user whether the user is in manager list or not.
       var isUser:any;
       isUser=true;
       //console.log(username[1])

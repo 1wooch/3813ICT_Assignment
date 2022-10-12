@@ -21,8 +21,8 @@ export class ChatRoomComponent implements OnInit {
   chanelname:any;
   username:any;
   ioConnection:any;
-  messages:string[]=[];
-  users:string[]=[];
+  messages:string[]=[]; // store the message as list 
+  users:string[]=[]; // store user name of message in list
 
   messagecontent:string="";
   
@@ -32,7 +32,7 @@ export class ChatRoomComponent implements OnInit {
 
   images:any[]=[];
   userProfile:any=localStorage.getItem('image');
-  profileImages:any[]=[];
+  profileImages:any[]=[]; // store user profile imagess in list.
 
 
  
@@ -40,7 +40,7 @@ export class ChatRoomComponent implements OnInit {
 
   ngOnInit(): void {this.check_get(),this.initIoConnection()}
 
-  private check_get(){
+  private check_get(){ // get the chanelname and user name from chatroom-list
     this.chanelname=this.route.snapshot.paramMap.get('chanelname');
     this.username=this.route.snapshot.paramMap.get('username');
 
@@ -52,27 +52,27 @@ export class ChatRoomComponent implements OnInit {
 
     this.socketService.initSocket();
     this.socketService.join(this.chanelname);
-    this.ioConnection=this.socketService. getMessage().subscribe((message:any)=>{
-      //console.log(message)
-      this.messages.push(message);
+    this.ioConnection=this.socketService. getMessage().subscribe((message:any)=>{ // by using observe if the observe do something get a message from it 
+      //console.log(message) 
+      this.messages.push(message); // push it in message list
       this.sender_message=message;
     });
-    this.ioConnection=this.socketService.getUsername().subscribe((username:any)=>{
+    this.ioConnection=this.socketService.getUsername().subscribe((username:any)=>{ // by using observe if the observe do something get a username from it  
       this.users.push(username);
       this.sender_username=username;
     });
-    this.ioConnection=this.socketService.getImage().subscribe((image:any)=>{
+    this.ioConnection=this.socketService.getImage().subscribe((image:any)=>{ // by using observe if the observe do something get a image from it 
       this.images.push(image);
       //console.log(this.images);
     });
-    this.ioConnection=this.socketService.getUserProfile().subscribe((profileImage:any)=>{
+    this.ioConnection=this.socketService.getUserProfile().subscribe((profileImage:any)=>{ // by using observe if the observe do something get a user profile from it 
       this.profileImages.push(profileImage);
 
     })
   
    
   }
-  public chat(){
+  public chat(){ // send the chat into socket (send chat button)
     if(this.messagecontent){
       //console.log(this.userProfile);
 
@@ -85,11 +85,11 @@ export class ChatRoomComponent implements OnInit {
     }
 
   }
-  joinroom(){
+  joinroom(){ //join the chat room
     this.socketService.join(this.chanelname);
 
   }
-  imageSelected(files:any){
+  imageSelected(files:any){ // image select and send it to socket.
     if(files.length>0){
       alert("image selected: "+files[0].name);
     }
