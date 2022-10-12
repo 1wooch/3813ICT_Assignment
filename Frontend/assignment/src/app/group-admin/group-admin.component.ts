@@ -54,6 +54,7 @@ export class GroupAdminComponent implements OnInit {
   selectedUserName:any;
   selectedChanelName:any;
   manager_list:any=[];
+  testValue:any;
 
 
 
@@ -63,12 +64,12 @@ export class GroupAdminComponent implements OnInit {
   }
   constructor(private modalService: NgbModal,private httpClient:HttpClient,private router:Router){}
 
-  ngOnInit(): void {this.getUser(),this.addUserChanel()}
+  ngOnInit(): void {this.getUser(),this.addUserChanel(),console.log(localStorage.getItem('role'))}
 
   public getUser(){
     this.manager_list=[];
     this.userlist=[];
-
+    this.testValue=localStorage.getItem('role') 
     //console.log(this.username); //work
     this.httpClient.post(BACKEND_URL+'/groupadminget',{username:this.username})
     .subscribe((data:any)=>{

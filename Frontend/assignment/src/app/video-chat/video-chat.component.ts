@@ -29,6 +29,11 @@ export class VideoChatComponent implements OnInit {
     this.ownID=this.peerService.myPeerId;} 
 
   ngOnInit(){}
+  
+
+
+
+
   //   this.socketService.peerID(this.peerService.myPeerId);
   //   navigator.mediaDevices.getUserMedia({
   //     audio:true,

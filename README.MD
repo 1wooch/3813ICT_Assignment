@@ -822,7 +822,7 @@ imageSelected(file:any) |socket.js
 
 + Group Admin Test<br/>
 
-![image](https://user-images.githubusercontent.com/51581298/195250857-63e67fed-3162-46d6-abe8-63dd617f3c0a.png)
+![image](https://user-images.githubusercontent.com/51581298/195389222-cd3e00c5-1f9f-4757-927b-9a19fe4d62f8.png)
 
 + Chat Test<br/>
 
@@ -831,7 +831,7 @@ imageSelected(file:any) |socket.js
 + Result<br/>
 
 
-![image](https://user-images.githubusercontent.com/51581298/195249914-79c798f5-da08-4007-93b2-a988dc21d168.png)
+![image](https://user-images.githubusercontent.com/51581298/195297137-618552bd-a657-4a48-ba32-2d11c438f8a0.png)
 
 
 + Fail Result<br/>
@@ -840,6 +840,7 @@ imageSelected(file:any) |socket.js
 <br/>
 
 ![image](https://user-images.githubusercontent.com/51581298/195251035-fa87cd9b-dc26-49d2-86e7-081d0cfd5dea.png)
+<br/>
 
 It is working when I do,but for some reason it is not working when I run this on test.
 

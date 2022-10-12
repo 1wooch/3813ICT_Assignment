@@ -4,8 +4,9 @@ describe('empty spec', () => {
     cy.wait(2000);
     cy.get('button[id="qqq Admin"]').click();
     cy.wait(2000);
-    cy.get('button[id="qqq Admin"]').click();
-    cy.wait(2000);
+    //cy.get('button[id="qqq Admin"]').click();
+    //cy.wait(2000);
+    
 
     
   })
