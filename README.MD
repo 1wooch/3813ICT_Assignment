@@ -822,25 +822,21 @@ imageSelected(file:any) |socket.js
 
 + Group Admin Test<br/>
 
-![image](https://user-images.githubusercontent.com/51581298/195389222-cd3e00c5-1f9f-4757-927b-9a19fe4d62f8.png)
+![image](https://user-images.githubusercontent.com/51581298/195408222-4e1abea1-3bf7-4a86-a7bb-02fb56bc100d.png)
 
 + Chat Test<br/>
 
-![image](https://user-images.githubusercontent.com/51581298/195250898-56fad3f5-217f-4761-b9fb-5f145e6dd939.png)
+![image](https://user-images.githubusercontent.com/51581298/195408169-69483d62-cf11-4e66-9d21-47f749473c65.png)
 
 + Result<br/>
 
 
-![image](https://user-images.githubusercontent.com/51581298/195297137-618552bd-a657-4a48-ba32-2d11c438f8a0.png)
+![image](https://user-images.githubusercontent.com/51581298/195408019-c79714ca-1a23-4037-b193-6eb623bef72c.png)
 
 
 + Fail Result<br/>
 
-![image](https://user-images.githubusercontent.com/51581298/195250977-337950db-1488-4220-95b2-0777419e3111.png)
-<br/>
-
-![image](https://user-images.githubusercontent.com/51581298/195251035-fa87cd9b-dc26-49d2-86e7-081d0cfd5dea.png)
-<br/>
+N/A
 
 It is working when I do,but for some reason it is not working when I run this on test.
 

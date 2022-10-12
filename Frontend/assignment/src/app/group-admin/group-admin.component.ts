@@ -64,12 +64,13 @@ export class GroupAdminComponent implements OnInit {
   }
   constructor(private modalService: NgbModal,private httpClient:HttpClient,private router:Router){}
 
-  ngOnInit(): void {this.getUser(),this.addUserChanel(),console.log(localStorage.getItem('role'))}
+  ngOnInit(): void {this.getUser(),this.addUserChanel(),console.log(localStorage.getItem('role'))} //get User name and add User chanel for Modal is working from start -> if not it makes error.
 
-  public getUser(){
+
+  public getUser(){ // get User 
     this.manager_list=[];
     this.userlist=[];
-    this.testValue=localStorage.getItem('role') 
+    this.testValue=localStorage.getItem('role')  //check whether the user is admin or not
     //console.log(this.username); //work
     this.httpClient.post(BACKEND_URL+'/groupadminget',{username:this.username})
     .subscribe((data:any)=>{

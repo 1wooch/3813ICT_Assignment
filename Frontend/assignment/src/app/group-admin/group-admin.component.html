@@ -5,6 +5,7 @@
     </head>
     <body>
       <div>
+        <h1>Manage User({{testValue}})</h1>
         <h1>You are Admin of group:{{group_list}}</h1>
         <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add User</button>
         <select [(ngModel)]="selectedUserName"   (change)="AddUserInChanel()">
@@ -42,9 +43,9 @@
                 <td>{{row[1]}}</td>
                 <td> <button class="btn btn-success" (click)="clickedchanelModal(this.group_list,row)">Check Chanel</button>
                 </td>
-                <td><button id="{{row[1]}} Admin"(click)="removeUser(row[1],row[0])" class="btn btn-danger">DELETE</button></td>
+                <td><button (click)="removeUser(row[1],row[0])" class="btn btn-danger">DELETE</button></td>
                 <td><button id="{{row[1]}} Admin" *ngIf="checkUser(row)"(click)="MakeAdmin(row[1],row[0])" class="btn btn-success">Make Admin</button>
-                <button *ngIf="checkAdmin(row)"(click)="deleteAdmin(row[1],row[0])" class="btn btn-danger">DELETE Admin</button></td>
+                <button  id="{{row[1]}} Admin"*ngIf="checkAdmin(row)"(click)="deleteAdmin(row[1],row[0])" class="btn btn-danger">DELETE Admin</button></td>
 
 
               </tr>
