@@ -784,7 +784,17 @@ CONTROLLER  | MODEL
 getChanel() | router/get_chatroom_list.js
 joinChanel | socket.js
 
+6. Socket.js
 
+VIEW: chat-room
+CONTROLLER  | MODEL
+------------- | -------------
+check_get() | router/get_chatroom_list.js
+initioConnection() | socket.js
+chat() | socket.js
+joinroom() | socket.js
+imageSelected(file:any) |socket.js
+ 
 -----------------------------------------------------
     
 
