@@ -43,7 +43,7 @@ export class AccountComponent implements OnInit {
 
   public edit(){
     const{e_email,e_role,e_age,e_birthdate,e_username,e_pwd,e_image}=this.form;
-    if(e_image!=null&&e_email !=null && e_role!=null&&e_age!=null && e_birthdate!=null && e_username!=null && e_pwd!=null){
+    if(e_email !=null && e_role!=null&&e_age!=null && e_birthdate!=null && e_username!=null && e_pwd!=null){
     //console.log(e_email,e_role,e_birthdate,e_age,e_username); //working
   
     

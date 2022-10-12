@@ -691,7 +691,7 @@ admin is array that reepresent admin that nominate by admin as list and contain 
 -----------------------------------------------------<br/>
 
 Description:
-chanels.json contains the information of chanels.
+chanels collection contains the information of chanels.
 chnelname is string and contain chanelname 
 user_list is list of user in chanel format is array and contain only string.
 groupname is string and represent what group the chanel is in.
@@ -762,11 +762,39 @@ joinChanel | socket.js
     
 
     
+# TESTING
 
-    
++ Login Tst
+![image](https://user-images.githubusercontent.com/51581298/195250146-fa0dc70b-d82b-43fd-b90e-2d9375a1ce8e.png)
+
++  Account Test
+![image](https://user-images.githubusercontent.com/51581298/195250272-113a500e-436c-4047-9f19-f5f3d813f682.png)
+
++  Manage User Add test
+![image](https://user-images.githubusercontent.com/51581298/195250614-fe330bd3-37b5-49f9-ae62-b53f075dc116.png)
+
++ Delete User test
+![image](https://user-images.githubusercontent.com/51581298/195250746-e10f67f6-ee33-45a7-9556-df19156458ce.png)
+
++ Group Admin Test
+![image](https://user-images.githubusercontent.com/51581298/195250857-63e67fed-3162-46d6-abe8-63dd617f3c0a.png)
+
++ Chat Test
+![image](https://user-images.githubusercontent.com/51581298/195250898-56fad3f5-217f-4761-b9fb-5f145e6dd939.png)
+
++ Result
+
+![image](https://user-images.githubusercontent.com/51581298/195249914-79c798f5-da08-4007-93b2-a988dc21d168.png)
 
 
-    
++ Fail Result
+![image](https://user-images.githubusercontent.com/51581298/195250977-337950db-1488-4220-95b2-0777419e3111.png)
+
+![image](https://user-images.githubusercontent.com/51581298/195251035-fa87cd9b-dc26-49d2-86e7-081d0cfd5dea.png)
+
+It is working when I do,but for some reason it is not working when I run this on test.
+
+
 
     
 

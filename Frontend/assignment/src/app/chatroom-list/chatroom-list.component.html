@@ -18,7 +18,7 @@
             <tbody>
               <tr *ngFor="let row of result">
                 <td>{{row}}</td>
-                <td><button (click)="joinChanel(row)" class="btn btn-info">Join</button></td>
+                <td><button id="{{row}} enter" (click)="joinChanel(row)" class="btn btn-info">Join</button></td>
               </tr>
               
             </tbody>
